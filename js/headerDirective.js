@@ -12,8 +12,7 @@ angular.module('campApp')
                 $('.hamburger').on('click', function() {
                     var navHeight = $('.header').height();
                     if (navHeight === 0) {
-                        $('.header').css('height', '170px');
-                        $('.bump-padding').css('height', '170px');
+                        $('.header, .bump-padding').css('height', '170px');
                     } else {
                         $('.header').css('height', '0px');
                         $('.bump-padding').css('height', '47px');
