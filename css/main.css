@@ -85,7 +85,12 @@
 }
 
 .home-body-container p{
-	max-width: 400px;
+	max-width: 600px;
+}
+
+#intro-text{
+	font-size: 20px;
+	color: lightblue;
 }
 
 .our-story{
@@ -171,12 +176,12 @@
 	font-size: 19px;
 	padding: 5px 0 1px;
 	text-align: left;
-	max-width: 800px;
+	max-width: 1000px;
 
 }
 
 .about-container p{
-	max-width: 800px;
+	max-width: 1000px;
 	padding: 5px 15px;
 }
 
@@ -202,7 +207,7 @@
 
 .length{
 	width: 100%;
-	max-width: 800px;
+	max-width: 1000px;
 }
 
 
