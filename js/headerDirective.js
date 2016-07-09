@@ -3,21 +3,21 @@ angular.module('campApp')
         return {
             templateUrl: './views/header-tmpl.html',
             restrict: 'EA',
-            controller: function($scope) {
-              var width = $(window).width();
-              if(width > 618)$('.header').css('height', '50px');
+            controller: function() {
 
+                $(document).ready(function() {
+                  var windowsize = $(window).width();
 
-
-                $('.hamburger').on('click', function() {
-                    var navHeight = $('.header').height();
-                    if (navHeight === 0) {
-                        $('.header, .bump-padding').css('height', '170px');
-                    } else {
-                        $('.header').css('height', '0px');
-                        $('.bump-padding').css('height', '47px');
+                  $('.hamburger').on('click', (function() {
+                      $('.small-menu').slideToggle('slow');
+                  }));
+                  $('.small-menu').on('resize', function(){
+                    if(windowsize > 618){
+                      $('.small-menu').hide()
                     }
-                });
+                  })
+
+                })
 
             }
         }
