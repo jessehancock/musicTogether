@@ -54,8 +54,8 @@
 
 .logo{
 	padding-top: 30px;
-	height: 40vw;
-	width: 40vw;
+	height: 40vh;
+	width: 40vh;
 	align-self: center;
 }
 
@@ -66,16 +66,17 @@
 	background-repeat: no-repeat;
 	display: flex;
 	flex-direction: column;
+	background-position:left top;
+
 }
 
 
 .home-container h1{
-	padding-top: -100px;
-	color: #DEDDDB;
-	font-size: 10vw;
-	font-weight: 800;
+	padding-top: 20px;
+	color: #026e52;
+	font-size: 10vh;
 	text-align: center;
-	text-shadow: 2px 2px black;
+
 }
 
 .home-container h3{
@@ -106,7 +107,7 @@
 
 #intro-text{
 	font-size: 20px;
-	color: lightblue;
+	color: #000;
 }
 
 .our-story{
@@ -166,7 +167,7 @@
 	justify-content: center;
 	min-width: 300px;
 	padding: 0 40px;
-	text-align: left;
+	text-align: center;
 }
 
 .space{
@@ -180,6 +181,8 @@
 	flex-wrap: wrap;
 	justify-content: space-around;
 	text-align: center;
+	max-width: 949px;
+	padding-top: 20px;
 }
 
 .about-container h3{
@@ -191,8 +194,8 @@
 .about-container h4{
 	font-size: 19px;
 	padding: 5px 0 1px;
-	text-align: left;
-	max-width: 1000px;
+	text-align: center;
+	max-width: 800px;
 
 }
 
@@ -209,7 +212,11 @@
 
 .rules{
 	width: 240px;
-	padding: 27px 20px;
+	padding: 10px 20px;
+}
+
+.rules h4{
+	text-align: left;
 }
 
 .rules i{
@@ -285,6 +292,10 @@
 /*test*/
 
 @media only screen and (max-width: 618px) {
+
+
+
+
 
   .hamburger {
     cursor: pointer;
