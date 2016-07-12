@@ -1,0 +1,57 @@
+/***********ABOUT PAGE***********/
+
+.about-container{
+	display: flex;
+	align-items: center;
+	flex-direction: column;
+	justify-content: center;
+	min-width: 300px;
+	padding: 0 40px;
+	text-align: center;
+}
+
+.about-container img{
+	height: 30vh;
+	width: 100vw;
+	object-fit: cover;
+
+}
+
+.space{
+	width: 100vw;
+	height: 10vh;
+}
+
+.rules-container{
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	justify-content: space-around;
+	text-align: center;
+	max-width: 949px;
+	padding-top: 20px;
+}
+
+
+.rules{
+	width: 240px;
+	padding: 10px 20px;
+}
+
+.rules h4{
+	text-align: left;
+}
+
+.rules i{
+	color: #C74525;
+	padding-top: 20px;
+}
+
+.rules p{
+	text-align: left;
+}
+
+.length{
+	width: 100%;
+	max-width: 1000px;
+}

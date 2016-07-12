@@ -1,0 +1,32 @@
+/*HEADER DIRECTIVE*/
+.menu-container{
+	background-color: #fff;
+	border-bottom: solid 1px #C74525;
+	position: fixed;
+	width: 100vw;
+}
+
+.bump-padding{
+	height: 50px;
+}
+
+.large-menu{
+	height: 50px;
+	display: flex;
+	justify-content: flex-end;
+	align-items: center;
+	padding-right: 50px;
+}
+
+.large-menu a{
+	color: #C74525;
+	padding: 0px 13px;
+}
+
+.large-menu a:hover{
+	border-bottom:solid 2px #C74525;
+}
+
+.small-menu{
+	display: none;
+}

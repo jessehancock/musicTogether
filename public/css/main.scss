@@ -1,0 +1,158 @@
+* {
+	font-family: 'lato';
+}
+.bold {
+	font-weight: 700;
+}
+/***********home***********/
+.logo {
+	padding-top: 30px;
+	height: 55vh;
+	width: 50vh;
+	align-self: center;
+}
+.home-container {
+	background-image: url("./images/forest2.jpeg");
+	background-size: cover;
+	height: 100vh;
+	background-repeat: no-repeat;
+	display: flex;
+	flex-direction: column;
+	background-position: left top;
+}
+.home-container h1 {
+	padding-top: 20px;
+	color: #fff;
+	font-size: 10vh;
+	text-align: center;
+	text-shadow: 2px 2px #000;
+}
+// .home-container h3 {
+// 	padding-top: 10px;
+// 	color: black;
+// 	text-align: center;
+// } Not Using
+
+bold{
+	font-weight: bold;
+	color:#C74525;
+}
+
+.skinnybanner{
+	height: 40vh;
+	width: 100vw;
+	object-fit: cover;
+
+}
+.home-body-container h3 {
+	font-size: 28px;
+	font-weight: 500;
+	padding-bottom: 10px;
+}
+.home-body-container {
+	display: flex;
+	align-items: center;
+	flex-direction: column;
+	justify-content: center;
+	min-width: 300px;
+	padding: 0 40px;
+	text-align: left;
+}
+.home-body-container p {
+	max-width: 600px;
+}
+#intro-text {
+	font-size: 20px;
+}
+.our-story {
+	padding: 30px 30px 0;
+	background-color: #fff;
+	line-height: 1.3;
+}
+.different {
+	padding: 20px 30px 0;
+	background-color: #fff;
+}
+.partners {
+	padding: 20px 30px 0;
+	background-color: #fff;
+}
+.buy-button {
+	background-color: #C74525;
+	border: none;
+	color: white;
+	padding: 15px 32px;
+	text-align: center;
+	text-decoration: none;
+	display: inline-block;
+	font-size: 16px;
+}
+.button-container {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 100%;
+	height: 10vh;
+	padding: 40px;
+}
+.home-photos {
+	display: flex;
+	align-content: center;
+	justify-content: center;
+}
+.home-photos img {
+	height: 20vw;
+	width: 20vw;
+	margin: 10px 5px 0;
+}
+/***************FOOTER***************/
+.footer-container {
+	height: 10px;
+	background: #C74525;
+	opacity: 0.5;
+}
+
+.menu-wrapper{
+@media only screen and (max-width: 618px) {
+	.hamburger {
+		cursor: pointer;
+		padding: 13px;
+		margin-right: 25px;
+		display: block;
+		float: right;
+	}
+	.line {
+		border-bottom: 4px solid #bbb;
+		width: 35px;
+		margin-bottom: 6px;
+	}
+	.line:last-child {
+		margin-bottom: 0;
+	}
+	/* Our styles here */
+	.large-menu {
+		display: none;
+	}
+	.small-menu {
+		display: flex;
+		width: 100%;
+		align-items: center;
+		flex-direction: column;
+		border-top: 1px solid #C74525;
+	}
+	.small-menu a {
+		color: #C74525;
+		padding: 9px 0;
+		width: 100%;
+		border-bottom: 1px solid #C74525;
+		text-align: center;
+	}
+	.bump-padding {
+		height: 47px;
+		transition: 1s;
+	}
+	.home-photos img {
+		margin: 10px 0;
+	}
+}
+}
