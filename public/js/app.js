@@ -1,7 +1,7 @@
 angular.module('campApp', ['ui.router'])
 .config(function($stateProvider, $urlRouterProvider){
 	$urlRouterProvider.otherwise('/');
-	
+
 	$stateProvider
 	.state
 	('home', {
@@ -16,8 +16,8 @@ angular.module('campApp', ['ui.router'])
     url: '/detox',
     templateUrl: './views/detox.html'
    })
-   .state('registration', {
-    url: '/registration',
-    templateUrl: './views/registration.html'
-   })
+  //  .state('registration', {
+  //   url: '/registration',
+  //   templateUrl: './views/registration.html'
+  //  })
 })

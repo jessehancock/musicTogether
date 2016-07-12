@@ -1,7 +1,7 @@
 angular.module('campApp', ['ui.router'])
 .config(["$stateProvider", "$urlRouterProvider", function($stateProvider, $urlRouterProvider){
 	$urlRouterProvider.otherwise('/');
-	
+
 	$stateProvider
 	.state
 	('home', {
@@ -16,11 +16,12 @@ angular.module('campApp', ['ui.router'])
     url: '/detox',
     templateUrl: './views/detox.html'
    })
-   .state('registration', {
-    url: '/registration',
-    templateUrl: './views/registration.html'
-   })
+  //  .state('registration', {
+  //   url: '/registration',
+  //   templateUrl: './views/registration.html'
+  //  })
 }])
+
 angular.module('campApp').controller('mainCtrl', ["$scope", function($scope){
 	$scope.name = 'jesse';	
 }])

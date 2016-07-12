@@ -5,8 +5,14 @@
 	font-weight: 700;
 }
 /***********home***********/
+.space {
+	width: 100vw;
+	height: 10vh;
+}
+
+
 .logo {
-	padding-top: 30px;
+	padding-top: 7vh;
 	height: 55vh;
 	width: 50vh;
 	align-self: center;
@@ -27,6 +33,8 @@
 	text-align: center;
 	text-shadow: 2px 2px #000;
 }
+
+
 // .home-container h3 {
 // 	padding-top: 10px;
 // 	color: black;
@@ -38,34 +46,43 @@ bold{
 	color:#C74525;
 }
 
+.camp-description{
+	font-size: 4vw;
+	font-weight: bold;
+	color:#C74525;
+	display: flex;
+	align-items: center;
+	justify-content: space-around;
+}
 .skinnybanner{
-	height: 40vh;
+	height: 45vh;
 	width: 100vw;
 	object-fit: cover;
-
 }
+
 .home-body-container h3 {
 	font-size: 28px;
 	font-weight: 500;
 	padding-bottom: 10px;
 }
+
 .home-body-container {
 	display: flex;
 	align-items: center;
 	flex-direction: column;
 	justify-content: center;
 	min-width: 300px;
-	padding: 0 40px;
 	text-align: left;
 }
 .home-body-container p {
 	max-width: 600px;
 }
 #intro-text {
-	font-size: 20px;
+	font-size: 3vh;
+	padding: 0 5px 0 5px;
 }
 .our-story {
-	padding: 30px 30px 0;
+	// padding: 30px 30px 0;
 	background-color: #fff;
 	line-height: 1.3;
 }
@@ -80,12 +97,20 @@ bold{
 .buy-button {
 	background-color: #C74525;
 	border: none;
+	height: 5em;
 	color: white;
 	padding: 15px 32px;
 	text-align: center;
 	text-decoration: none;
 	display: inline-block;
 	font-size: 16px;
+  border-radius: 20%/50%;
+	cursor: pointer;
+	transition: all 0.3s ease 0s;
+}
+
+.buy-button:hover{
+	background-color: #9f371d;
 }
 .button-container {
 	display: flex;
@@ -121,6 +146,9 @@ bold{
 		display: block;
 		float: right;
 	}
+
+
+
 	.line {
 		border-bottom: 4px solid #bbb;
 		width: 35px;
