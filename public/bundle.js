@@ -32,6 +32,7 @@ angular.module('campApp')
     restrict: 'EA'
   }
 })
+
 angular.module('campApp')
     .directive('headerDirective', function() {
         return {

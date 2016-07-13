@@ -8,10 +8,22 @@
   padding: 0 40px;
   text-align: center; }
 
+.about-container li {
+  list-style-type: none;
+  font-weight: 700;
+  font-size: 1.1rem;
+  color: #df6b4e; }
+
 .about-container img {
-  height: 30vh;
+  height: 45vh;
   width: 100vw;
   object-fit: cover; }
+
+.about-intro {
+  max-width: 800px;
+  text-align: left;
+  font-size: 4vh;
+  padding: 0 5px; }
 
 .rules-container {
   display: flex;
@@ -19,12 +31,12 @@
   flex-wrap: wrap;
   justify-content: space-around;
   text-align: center;
-  max-width: 949px;
+  max-width: 1000px;
   padding-top: 20px; }
 
 .rules {
   width: 240px;
-  padding: 10px 20px; }
+  padding: 10px 25px; }
 
 .rules h4 {
   text-align: left; }
@@ -113,7 +125,7 @@ bold {
   color: #C74525; }
 
 .camp-description {
-  font-size: 4vw;
+  font-size: 5vw;
   font-weight: bold;
   color: #C74525;
   display: flex;
@@ -139,11 +151,11 @@ bold {
   text-align: left; }
 
 .home-body-container p {
-  max-width: 600px; }
+  max-width: 900px; }
 
 #intro-text {
-  font-size: 3vh;
-  padding: 0 5px 0 5px; }
+  font-size: 4vh;
+  padding: 0 5px; }
 
 .our-story {
   background-color: #fff;
@@ -157,31 +169,6 @@ bold {
   padding: 20px 30px 0;
   background-color: #fff; }
 
-.buy-button {
-  background-color: #C74525;
-  border: none;
-  height: 5em;
-  color: white;
-  padding: 15px 32px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 16px;
-  border-radius: 20%/50%;
-  cursor: pointer;
-  transition: all 0.3s ease 0s; }
-
-.buy-button:hover {
-  background-color: #9f371d; }
-
-.button-container {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 100%;
-  height: 10vh;
-  padding: 40px; }
-
 .home-photos {
   display: flex;
   align-content: center;
@@ -193,10 +180,33 @@ bold {
   margin: 10px 5px 0; }
 
 /***************FOOTER***************/
-.footer-container {
-  height: 10px;
-  background: #C74525;
-  opacity: 0.5; }
+.buy-button {
+  background-color: #C74525;
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  display: inline-block;
+  outline: none;
+  border: none;
+  border-radius: 16%/50%;
+  cursor: pointer;
+  transition: all 0.3s ease 0s; }
+
+.buy-button:hover {
+  background-color: #9f371d; }
+
+.button-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 8vh;
+  padding: 40px; }
+
+.bottom {
+  height: 3vh;
+  width: 100vw;
+  background-color: #9f371d; }
 
 @media only screen and (max-width: 618px) {
   .menu-wrapper {
@@ -252,7 +262,8 @@ bold {
 
 .large-menu a {
   color: #C74525;
-  padding: 0px 13px; }
+  padding: 0px 13px;
+  text-decoration: none; }
 
 .large-menu a:hover {
   border-bottom: solid 2px #C74525; }
