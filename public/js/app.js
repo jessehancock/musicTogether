@@ -6,15 +6,15 @@ angular.module('campApp', ['ui.router'])
 	.state
 	('home', {
     url: '/',
-    templateUrl: './views/home.html'
+    templateUrl: './public/views/home.html'
    })
   .state('about', {
     url: '/about',
-    templateUrl: './views/about.html'
+    templateUrl: './public/views/about.html'
    })
    .state('detox', {
     url: '/detox',
-    templateUrl: './views/detox.html'
+    templateUrl: './public/views/detox.html'
    })
   //  .state('registration', {
   //   url: '/registration',

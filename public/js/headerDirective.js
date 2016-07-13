@@ -1,7 +1,7 @@
 angular.module('campApp')
     .directive('headerDirective', function() {
         return {
-            templateUrl: './views/header-tmpl.html',
+            templateUrl: './public/views/header-tmpl.html',
             restrict: 'EA',
             controller: function() {
 
