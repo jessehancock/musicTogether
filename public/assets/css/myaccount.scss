@@ -1,0 +1,23 @@
+.registration-container{
+  max-width: 1000px;
+  letter-spacing: 1.2;
+  line-height: 1.2;
+  color: grey;
+  padding: 0 50px 60px 100px;
+    h2{
+      color: #69D8DE;
+      font-size: 1.5rem;
+    }
+    .lastname{
+      width: 200px;
+    }
+    .email{
+      width: 250px;
+    }
+    .address{
+      width: 300px;
+    }
+    input{
+      line-height: 1.5;
+    }
+}

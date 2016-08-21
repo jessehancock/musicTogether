@@ -1,3 +1,4 @@
+
 // REQUIRE DEPENDENCIES
 // ============================================================
 var gulp = require('gulp');
@@ -10,8 +11,8 @@ var babel = require('gulp-babel');
 // DECLARE FILE PATHS
 // ============================================================
 var paths = {
-  jsSource: ['./public/js/**/*.js', '!/public/bundle.js'],
-  sassSource: ['./public/css/**/*.sass', './public/css/**/*.scss']
+  jsSource: ['./public/app/**/*.js', '!/public/bundle.js'],
+  sassSource: ['./public/assets/css/**/*.sass', './public/assets/css/**/*.scss']
 };
 // DEFINE TASKS
 // ============================================================

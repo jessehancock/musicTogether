@@ -1,0 +1,9 @@
+<account-nav-directive></account-nav-directive>
+<div ng-init="getClassSchedule()">
+
+<div class="schedule-container" ng-repeat="class in schedule | orderBy:'id'">
+  <h1>{{class.class_time  | date : "short"}}</h1>
+  <h1>{{class.class_day}}</h1>
+  <h1>{{class.start_date | date : "longDate"}}</h1>
+</div>
+</div>

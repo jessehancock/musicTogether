@@ -1,0 +1,159 @@
+.image-container {
+    height: 60vh;
+    width: 100vw;
+    background-color: #A9A9A9;
+    .homeImage {
+        position: absolute;
+        height: 60vh;
+        width: 100vw;
+        object-fit: cover;
+    }
+    figure:nth-child(1) {
+        animation: xfade 30s 24s infinite;
+    }
+    figure:nth-child(2) {
+        animation: xfade 30s 18s infinite;
+    }
+    figure:nth-child(3) {
+        animation: xfade 30s 12s infinite;
+    }
+    figure:nth-child(4) {
+        animation: xfade 30s 6s infinite;
+    }
+    figure:nth-child(5) {
+        animation: xfade 30s 0s infinite;
+    }
+    @keyframes xfade {
+        0% {
+            opacity: 1;
+        }
+        10% {
+            opacity: 1;
+        }
+        20% {
+            opacity: 0;
+        }
+        90% {
+            opacity: 0;
+        }
+        100% {
+            opacity: 1;
+        }
+    }
+}
+
+
+
+
+.middle-container1 {
+    padding: 60px 0;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    border-bottom: 1px grey dotted;
+    h2 {
+        padding: 25px 20px 0;
+        color: #69D8DE;
+        font-size: 2rem;
+        letter-spacing: 1.2;
+        text-align: right;
+    }
+    h3 {
+        text-align: right;
+        padding: 10px 20px 10px 0;
+        color: grey;
+        max-width: 500px;
+        font-size: 1.4rem;
+        letter-spacing: 1.2;
+    }
+    p {
+        text-align: right;
+        padding: 0 20px 20px 0;
+        max-width: 500px;
+        letter-spacing: 1.2;
+        line-height: 1.2;
+        color: grey;
+        font-size: 1.3rem;
+    }
+    .video {
+        width: 576;
+        height: 324;
+    }
+}
+.middle-container2-title {
+    font-size: 2rem;
+    color: #69D8DE;
+    padding: 40px 0 20px 40px;
+}
+.middle-container2 {
+    padding: 0 30px 60px;
+    display: flex;
+    justify-content: space-around;
+    border-bottom: 1px grey dotted;
+    .news-box {
+        max-width: 400px;
+        min-width: 270px;
+    }
+    h3 {
+        padding: 10px 0 2px 10px;
+        color: #FF7878;
+        font-size: 1.4rem;
+    }
+    p {
+        padding: 5px 10px 10px;
+        color: grey;
+        letter-spacing: 1.2;
+        line-height: 1.2;
+        font-size: 1.2rem;
+    }
+}
+.middle-container3 {
+    padding: 60px 20px 60px 40px;
+    display: flex;
+    justify-content: space-around;
+    letter-spacing: 1.2;
+    line-height: 1.2;
+    h3 {
+        padding: 0 0 2px;
+        color: #69D8DE;
+        font-size: 1.4rem;
+    }
+    p {
+        color: grey;
+        font-size: 1.2rem
+    }
+    img {
+        opacity: 0.7;
+        height: 300px;
+        width: 290px;
+    }
+    .about-music {
+        max-width: 350px;
+        min-width: 270px;
+        padding: 0 0 0 10px;
+    }
+}
+@media only screen and (max-width: 900px) {
+    .logo-containter img {
+        height: 22vh;
+    }
+    .middle-container2 {
+        display: flex;
+        flex-direction: column;
+        .news-box {
+            max-width: 800px;
+        }
+    }
+    .middle-container3 {
+        display: flex;
+        flex-direction: column;
+        img {
+            align-self: center;
+        }
+        .about-music {
+            max-width: 800px;
+            padding: 0 5px;
+        }
+    }
+}

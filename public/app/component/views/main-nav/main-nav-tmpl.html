@@ -1,0 +1,90 @@
+<div class="menu-wrapper">
+	<div class="logo-containter">
+		<img src="./assets/images/MTatDaybreakTEAL.png" alt="Music Together logo">
+
+	</div>
+	<div class="menu-container">
+		<a ui-sref='home'>Home</a>
+		<a ui-sref='about'>About</a>
+		<a ui-sref='contact'>Contact</a>
+		<a ui-sref='schedule'>Schedule</a>
+		<!-- Trigger the modal with a button -->
+		<!-- <a data-toggle="modal" data-target="#myModal" ng-click="currentUserSignedIn = !currentUserSignedIn" ng-hide="currentUserSignedIn">Log In</a> -->
+		<a data-toggle="modal" data-target="#myModal" ng-click="login()" ng-show="!currentUserSignedIn">Log In</a>
+		<!--add feature if they are logged in that it changes to my account-->
+		<!-- remember to hide ng-hide or css hide -->
+		<a ui-sref='myaccount' ng-show="currentUserSignedIn">My Account</a>
+
+
+
+
+
+
+		<div id="myModal" class="modal fade" role="dialog" ng-controller="loginCtrl">
+			<div class="modal-dialog">
+
+				<!-- Modal content-->
+				<div class="modal-content">
+					<section class="login-modal" ng-hide='loginForm'>
+						<div class="modal-header">
+							<button type="button" class="close" data-dismiss="modal">&times;</button>
+							<h4 class="modal-title">Log In</h4>
+						</div>
+						<div class="modal-body flex">
+
+
+							<!-- LOCAL AUTH -->
+							<!-- <input class='email'type="text" placeholder="email" ng-model='customer.parent.email' >
+								<br>
+								<br>
+								<input type="password" class='password'type="text" placeholder="password" ng-model='customer.parent.password' >
+								<button class='login-button' type="submit">Login</button>
+								<br>
+								<br> -->
+							<a href="/auth/facebook"><button class='fb-login-button' type="submit">facebook</button></a>
+							<br>
+							<br>
+							<!-- <button ng-click="loginG()" class='g-login-button' type="submit">login w/ google</button> -->
+
+							<!--LOCAL AUTH-->
+							<!-- <p>Don't have an account? <button id="no-account" type="button" class="btn btn-link"
+									ng-click="loginForm = !loginForm">Register</button></p> -->
+						</div>
+					</section>
+
+
+					<!-- LOCAL AUTH -->
+					<!-- <section class="login-modal" ng-show="loginForm">
+							<div class="modal-header">
+								<button type="button" class="close" data-dismiss="modal">&times;</button>
+								<h4 class="modal-title">Create Account</h4>
+							</div>
+							<div class="modal-body flex">
+
+								<input class='email'type="text" placeholder="email" ng-model='customer.parent.email' >
+								<br>
+								<br>
+								<input type="password" class='password'type="text" placeholder="password" ng-model='customer.parent.password' >
+								<br>
+								<br>
+								<input type="password" class='password'type="text" placeholder="retype password" ng-model='customer.parent.password' >
+								<button class='login-button' type="submit">Create Account</button>
+
+								<p>Already have an account? <button id="have_account" type="button" class="btn btn-link account" ng-click="loginForm = !loginForm">Login</button></p>
+							</div>
+						</section> -->
+
+
+				</div>
+			</div>
+		</div>
+
+
+
+
+
+
+
+		<!--add feature if they are logged in that it changes to my account-->
+	</div>
+</div>

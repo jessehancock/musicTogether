@@ -1,0 +1,36 @@
+<div class="account-setup-container">
+<h2>To register:</h2>
+
+<!--TODO: make this welcome the user by name  -->
+<p>You're account is almost setup! Please fill out the rest of the info.</p>
+
+<!-- GET CURRENT USER DISPLAYNAME & DISPLAY -->
+
+
+
+<h3>Phone</h3>
+<input class='phone' type="tel"  ng-model='customerObj.parent.phone' required/>
+
+<h3>Email</h3>
+<input class='email'type="email" placeholder="john@gmail.com" ng-model='customerObj.parent.email' required/>
+
+<!-- Wrap this in a div which you ng-repeat over. Every time you click the add child button you will add another entry to the customerObj's children array -->
+<div ng-repeat='child in customerObj.children'>
+  <h3>Child's Name</h3>
+  <input class="child-name"type="text" placeholder="" ng-model='child.name'>
+  <input class="child-birthdate" type="date" placeholder="years" ng-model='child.birthdate' >
+  <button id="removeChild" type="button" ng-click='removeChild($index)'>Remove Child</button>
+</div>
+
+
+<!-- ADD CHILD TO YOUR ACCOUNT -->
+
+<br>
+<br>
+<button ng-click='addChild()'id="addChild" type="button">Add Child</button>
+
+<br>
+<br>
+<button type="button" ng-click="addCustomers(customerObj)">Update Account</button>
+
+</div>

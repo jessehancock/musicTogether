@@ -1,5 +1,5 @@
 {
-  "name": "camp",
+  "name": "musicTogether",
   "version": "1.0.0",
   "description": "",
   "main": "gulpfile.js",
@@ -26,5 +26,14 @@
     "gulp-sass": "^2.1.1",
     "gulp-uglify": "^1.5.1",
     "gulp-watch": "^4.3.5"
+  },
+  "dependencies": {
+    "body-parser": "^1.15.2",
+    "cors": "^2.7.1",
+    "express": "^4.14.0",
+    "express-session": "^1.14.0",
+    "massive": "^2.5.0",
+    "passport": "^0.3.2",
+    "passport-facebook": "^2.1.1"
   }
 }

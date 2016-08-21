@@ -1,0 +1,68 @@
+.schedule {
+    padding: 60px 0;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    color: grey;
+    letter-spacing: 1.2;
+    line-height: 1.2;
+    h2 {
+        color: #FF7878;
+        padding: 15px 0 5px;
+        font-size: 1.8rem;
+        align-self: center;
+    }
+    p {
+        align-self: center;
+    }
+    .schedule-titles-container {
+        display: flex;
+        justify-content: center;
+        padding: 0 60px 0 0;
+        h3 {
+            font-size: 1.5rem;
+        }
+        .schedule-titles {
+          padding: 0 25px;
+        }
+    }
+    .about-registration-container {
+        display: flex;
+        justify-content: center;
+        padding: 60px 100px 0 100px;
+        .about-registration {
+          padding: 0 10vw 0 0;
+            h3 {
+                font-size: 1.5rem;
+            }
+            p {
+                max-width: 400px;
+            }
+        }
+        .tuition {
+            max-width: 400px;
+            h3 {
+                font-size: 1.3rem;
+            }
+            salmo {
+                color: #FF7878;
+            }
+        }
+    }
+}
+
+
+
+
+@media only screen and (max-width: 900px) {
+      .schedule-titles {
+        padding: 0 2px;
+      }
+    .about-registration-container {
+        display: flex;
+        flex-direction: column;
+    }
+    .tuition{
+      padding-top: 15px;
+    }
+}

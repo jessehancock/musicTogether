@@ -1,0 +1,19 @@
+.account-setup-container{
+  padding: 25px 100px 70px;
+  font-size: 2rem;
+}
+
+/* style all input elements with a required attribute */
+// input:required {
+// }
+//
+//
+// input:required:focus {
+//
+// }
+//
+// input:required:hover {
+//
+// }
+input:valid { background-color: white };
+input:invalid { background-color: #FFD3D2};
