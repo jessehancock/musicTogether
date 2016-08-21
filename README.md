@@ -1,1 +1,2 @@
-# campWasatch
+# MusicTogether
+# musicTogether
