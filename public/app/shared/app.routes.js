@@ -76,6 +76,7 @@ angular.module('musApp', ['ui.router'])
 	templateUrl: './app/component/views/myAccount/myschedule/myschedule.html',
 	controller: 'myAccountCtrl'
 	//need a resolve to get user and assign it to scope
+	//TODO
  });
 
 
