@@ -42,6 +42,17 @@ angular.module("musApp").service("myAccountServ", function($http) {
     });
   };
 
+  this.logout = function() {
+    console.log('logout2');
+    return $http({
+      method: 'get',
+      url: '/logout'
+    }).then(function(response) {
+      return response;
+    });
+  };
+
+
 
 
 });

@@ -333,7 +333,6 @@ angular.module("musApp").controller("myAccountCtrl", ["$scope", "myAccountServ",
         myAccountServ.getCurrentUser().then(function(response, $rootScope) {
             $scope.parent = response;
             //I call this hear so that I already have a parent.id back
-            $scope.getCurrentUserChildren($scope.parent.id);
         });
     };
     $scope.getCurrentUser();
@@ -360,6 +359,15 @@ angular.module("musApp").controller("myAccountCtrl", ["$scope", "myAccountServ",
       console.log(course);
       $scope.course = course;
     };
+
+
+    $scope.logout = function() {
+        console.log('logout1');
+        myAccountServ.logout().then(function(response) {
+
+        });
+    };
+
 
 
 }]);
@@ -408,28 +416,27 @@ angular.module("musApp").service("myAccountServ", ["$http", function($http) {
     });
   };
 
+  this.logout = function() {
+    console.log('logout2');
+    return $http({
+      method: 'get',
+      url: '/logout'
+    }).then(function(response) {
+      return response;
+    });
+  };
 
 
-}]);
 
-// INITILIZE CONTROLLER
-// ============================================================
-angular.module("musApp").controller("accountNavCtrl", ["$scope", function($scope) {
-  // VARIABLES
-  // ============================================================
 
-  // FUNCTIONS
-  // ============================================================
-  function logout() {
-
-        }
 }]);
 
 angular.module('musApp')
     .directive('accountNavDirective', function() {
         return {
             templateUrl: './app/component/views/myAccount/account-nav/account-nav.html',
-            restrict: 'EA'
+            restrict: 'EA',
+            controller: 'myAccountCtrl'
         };
     });
 

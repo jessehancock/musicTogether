@@ -12,7 +12,6 @@ angular.module("musApp").controller("myAccountCtrl", function($scope, myAccountS
         myAccountServ.getCurrentUser().then(function(response, $rootScope) {
             $scope.parent = response;
             //I call this hear so that I already have a parent.id back
-            $scope.getCurrentUserChildren($scope.parent.id);
         });
     };
     $scope.getCurrentUser();
@@ -39,6 +38,15 @@ angular.module("musApp").controller("myAccountCtrl", function($scope, myAccountS
       console.log(course);
       $scope.course = course;
     };
+
+
+    $scope.logout = function() {
+        console.log('logout1');
+        myAccountServ.logout().then(function(response) {
+
+        });
+    };
+
 
 
 });

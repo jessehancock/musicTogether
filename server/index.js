@@ -88,7 +88,11 @@ app.get('/me', function(req, res) {
     res.status(200).json(req.user);
 });
 
-
+app.get('/logout', function(req, res){
+  console.log('logout from index.js');
+    req.logout();
+    res.redirect('/about');
+});
 
 
 var create = require ('./controller/create');
