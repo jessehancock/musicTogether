@@ -1,5 +1,5 @@
 // ============================================================
-angular.module("musApp").controller("myAccountCtrl", function($scope, myAccountServ, $rootScope) {
+angular.module("musApp").controller("myAccountCtrl", function($scope, myAccountServ, $rootScope, $state) {
 
     $scope.getClassSchedule = function() {
         myAccountServ.getClassSchedule().then(function(response) {
@@ -10,7 +10,9 @@ angular.module("musApp").controller("myAccountCtrl", function($scope, myAccountS
 
     $scope.getCurrentUser = function() {
         myAccountServ.getCurrentUser().then(function(response, $rootScope) {
+            console.log('this might be the answer' + response.id);
             $scope.parent = response;
+            $scope.getCurrentUserChildren(response.id);
             //I call this hear so that I already have a parent.id back
         });
     };
@@ -21,6 +23,9 @@ angular.module("musApp").controller("myAccountCtrl", function($scope, myAccountS
             $scope.children = response;
         });
     };
+
+    // $scope.getCurrentUserChildren(id);
+
 
     $scope.addChildToClass = function(course, child) {
         var data = {
@@ -35,15 +40,14 @@ angular.module("musApp").controller("myAccountCtrl", function($scope, myAccountS
     };
 
     $scope.addClassToScope = function(course){
-      console.log(course);
       $scope.course = course;
     };
 
 
     $scope.logout = function() {
-        console.log('logout1');
         myAccountServ.logout().then(function(response) {
-
+          $rootScope.currentUserSignedIn = false;
+          $state.go('home');
         });
     };
 

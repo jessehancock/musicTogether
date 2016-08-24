@@ -89,9 +89,8 @@ app.get('/me', function(req, res) {
 });
 
 app.get('/logout', function(req, res){
-  console.log('logout from index.js');
     req.logout();
-    res.redirect('/about');
+    return res.status(200).send('logged out');
 });
 
 

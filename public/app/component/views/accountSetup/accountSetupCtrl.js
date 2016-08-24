@@ -27,7 +27,6 @@ angular.module("musApp").controller("accountSetupCtrl", function($scope, account
 
     $scope.addCustomers = function(customerObj){
     	accountSetupServ.addCustomers(customerObj).then(function(response){
-        console.log('the truth', response);
         $scope.parent = response;
         $state.go('myaccount');
     	});

@@ -209,7 +209,6 @@ angular.module("musApp").controller("accountSetupCtrl", ["$scope", "accountSetup
 
     $scope.addCustomers = function(customerObj){
     	accountSetupServ.addCustomers(customerObj).then(function(response){
-        console.log('the truth', response);
         $scope.parent = response;
         $state.go('myaccount');
     	});
@@ -246,7 +245,6 @@ angular.module('musApp')
     controller: ["$scope", "footerServ", function($scope, footerServ){
       $scope.addEmail = function(email) {
           footerServ.addEmail(email).then(function(response){
-            console.log(response);
             alert("thanks for joining " + response.data.email);
             //TODO: alert when email is already entered
           });
@@ -269,7 +267,10 @@ angular.module("musApp").service("footerServ", ["$http", function($http) {
 
 }]);
 
-angular.module('musApp').controller('loginCtrl', ["$scope", "loginServ", function($scope, loginServ){
+angular.module('musApp').controller('loginCtrl', ["$scope", "authService", function($scope, authService){
+
+
+$scope.currentUserSignedIn = false;
 
 	$scope.login = function(){
 		var onSuccessCallback = function(data){
@@ -277,11 +278,14 @@ angular.module('musApp').controller('loginCtrl', ["$scope", "loginServ", functio
 		};
 	};
 
+	$scope.getUser = function () {
+		authService.getCurrentUser().then(function(response) {
+			console.log(response);
+				(response.data)? $scope.currentUserSignedIn = true : $scope.currentUserSignedIn = false;
+		});
+	};
 
-
-}]);
-
-angular.module('musApp').service("loginServ", ["$http", function($http){
+$scope.getUser();
 
 
 }]);
@@ -291,13 +295,7 @@ angular.module('musApp')
         return {
             templateUrl: './app/component/views/main-nav/main-nav-tmpl.html',
             restrict: 'EA',
-            controller: ["$scope", "authService", function($scope, authService) {
-                $scope.currentUserSignedIn = false;
-                authService.getCurrentUser().then(function(response) {
-                    if (response.data) $scope.currentUserSignedIn = true;
-                    else $scope.currentUserSignedIn = false;
-                });
-            }],
+            controller: 'loginCtrl',
             link: function(elem, attr, scope) {
 
                 $(document).ready(function() {
@@ -320,7 +318,7 @@ angular.module('musApp')
     });
 
 // ============================================================
-angular.module("musApp").controller("myAccountCtrl", ["$scope", "myAccountServ", "$rootScope", function($scope, myAccountServ, $rootScope) {
+angular.module("musApp").controller("myAccountCtrl", ["$scope", "myAccountServ", "$rootScope", "$state", function($scope, myAccountServ, $rootScope, $state) {
 
     $scope.getClassSchedule = function() {
         myAccountServ.getClassSchedule().then(function(response) {
@@ -331,7 +329,9 @@ angular.module("musApp").controller("myAccountCtrl", ["$scope", "myAccountServ",
 
     $scope.getCurrentUser = function() {
         myAccountServ.getCurrentUser().then(function(response, $rootScope) {
+            console.log('this might be the answer' + response.id);
             $scope.parent = response;
+            $scope.getCurrentUserChildren(response.id);
             //I call this hear so that I already have a parent.id back
         });
     };
@@ -342,6 +342,9 @@ angular.module("musApp").controller("myAccountCtrl", ["$scope", "myAccountServ",
             $scope.children = response;
         });
     };
+
+    // $scope.getCurrentUserChildren(id);
+
 
     $scope.addChildToClass = function(course, child) {
         var data = {
@@ -356,15 +359,14 @@ angular.module("musApp").controller("myAccountCtrl", ["$scope", "myAccountServ",
     };
 
     $scope.addClassToScope = function(course){
-      console.log(course);
       $scope.course = course;
     };
 
 
     $scope.logout = function() {
-        console.log('logout1');
         myAccountServ.logout().then(function(response) {
-
+          $rootScope.currentUserSignedIn = false;
+          $state.go('home');
         });
     };
 
@@ -396,10 +398,12 @@ angular.module("musApp").service("myAccountServ", ["$http", function($http) {
   };
 
   this.getCurrentUserChildren = function(id){
+    console.log('step2' + id);
     return $http({
       method: 'GET',
       url: '/mykids/' + id
     }).then(function(response) {
+      console.log('step3' + response);
       // TODO get this date function to calc age
       // var today = new Date(99,5,24);
       // var age = today - response.data[0].birthdate;
@@ -419,7 +423,7 @@ angular.module("musApp").service("myAccountServ", ["$http", function($http) {
   this.logout = function() {
     console.log('logout2');
     return $http({
-      method: 'get',
+      method: 'GET',
       url: '/logout'
     }).then(function(response) {
       return response;

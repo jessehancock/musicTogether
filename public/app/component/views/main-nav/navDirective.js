@@ -3,13 +3,7 @@ angular.module('musApp')
         return {
             templateUrl: './app/component/views/main-nav/main-nav-tmpl.html',
             restrict: 'EA',
-            controller: function($scope, authService) {
-                $scope.currentUserSignedIn = false;
-                authService.getCurrentUser().then(function(response) {
-                    if (response.data) $scope.currentUserSignedIn = true;
-                    else $scope.currentUserSignedIn = false;
-                });
-            },
+            controller: 'loginCtrl',
             link: function(elem, attr, scope) {
 
                 $(document).ready(function() {

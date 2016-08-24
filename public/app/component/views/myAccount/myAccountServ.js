@@ -22,10 +22,12 @@ angular.module("musApp").service("myAccountServ", function($http) {
   };
 
   this.getCurrentUserChildren = function(id){
+    console.log('step2' + id);
     return $http({
       method: 'GET',
       url: '/mykids/' + id
     }).then(function(response) {
+      console.log('step3' + response);
       // TODO get this date function to calc age
       // var today = new Date(99,5,24);
       // var age = today - response.data[0].birthdate;
@@ -45,7 +47,7 @@ angular.module("musApp").service("myAccountServ", function($http) {
   this.logout = function() {
     console.log('logout2');
     return $http({
-      method: 'get',
+      method: 'GET',
       url: '/logout'
     }).then(function(response) {
       return response;
