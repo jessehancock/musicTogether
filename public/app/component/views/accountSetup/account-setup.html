@@ -5,25 +5,31 @@
 <p>You're account is almost setup! Please fill out the rest of the info.</p>
 
 <!-- GET CURRENT USER DISPLAYNAME & DISPLAY -->
-
-
-
-<h3>Phone</h3>
-<input class='phone' type="tel"  ng-model='customerObj.parent.phone' required/>
-
-<h3>Email</h3>
-<input class='email'type="email" placeholder="john@gmail.com" ng-model='customerObj.parent.email' required/>
-
-<!-- Wrap this in a div which you ng-repeat over. Every time you click the add child button you will add another entry to the customerObj's children array -->
-<div ng-repeat='child in customerObj.children'>
-  <h3>Child's Name</h3>
-  <input class="child-name"type="text" placeholder="" ng-model='child.name'>
-  <input class="child-birthdate" type="date" placeholder="years" ng-model='child.birthdate' >
-  <button id="removeChild" type="button" ng-click='removeChild($index)'>Remove Child</button>
+<div class="group schedule-group">
+    <input class="dark-input searchClass"  ng-model='customerObj.parent.email'  required>
+    <span class="highlight"></span>
+    <span class="bar dark-bar"></span>
+    <label>Email</label>
+</div>
+<div class="group schedule-group">
+    <input class="dark-input searchClass" ng-model='customerObj.parent.phone' required  required>
+    <span class="highlight"></span>
+    <span class="bar dark-bar"></span>
+    <label>Phone</label>
 </div>
 
+<div ng-repeat='child in customerObj.children'>
+  <div class="group schedule-group">
+    <input class="dark-input searchClass"  name="name" ng-model='child.name' required>
+    <span class="highlight"></span>
+    <span class="bar dark-bar"></span>
+    <label>Child's Name</label>
+    <input class="child-birthdate" type="date" placeholder="years" ng-model='child.birthdate' >
+    <button id="removeChild" type="button" ng-click='removeChild($index)'>Remove Child</button>
 
-<!-- ADD CHILD TO YOUR ACCOUNT -->
+
+  </div>
+</div>
 
 <br>
 <br>
