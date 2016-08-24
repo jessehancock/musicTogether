@@ -83,35 +83,31 @@ passport.deserializeUser(function(obj, done) {
 
 
 
-//trying to get this on the page and into a user object
+
 app.get('/me', function(req, res) {
     res.status(200).json(req.user);
 });
 
-// console.log(db);
+
+
+
+var create = require ('./controller/create');
+var read = require('./controller/read');
+var update = require('./controller/update');
+var _delete = require('./controller/update');
+
 
 
 //GET ENDPOINTS
-//get all products
-
-
-
-//express endponts
-var scheduleCtrl = require ('./controller/scheduleCtrl');
-var myAccountCrtl = require('./controller/myAccountCtrl');
-var accountSetupCtrl = require('./controller/accountSetupCtrl');
-
-//get full schedule
-app.get('/classSchedule', scheduleCtrl.getSchedule);
-//get current user and kids
-app.get('/mykids/:id', myAccountCrtl.getCurrentUserKids);
+app.get('/classSchedule', read.getSchedule);
+app.get('/mykids/:id', read.getCurrentUserKids);
 
 //POST ENDPOINTS
-app.post('/updateUser', accountSetupCtrl.postUser);
+app.post('/updateUser', create.postUser);
+app.post('/mailinglist', create.postEmail);
 
-
-
-
+//PUT
+app.put('/addToCourse', update.addToClass);
 
 
 
