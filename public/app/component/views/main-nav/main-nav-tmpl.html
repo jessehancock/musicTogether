@@ -3,23 +3,73 @@
 		<img src="./assets/images/MTatDaybreakTEAL.png" alt="Music Together logo">
 
 	</div>
-	<div class="menu-container">
-		<a ui-sref='home'>Home</a>
-		<a ui-sref='about'>About</a>
-		<a ui-sref='contact'>Contact</a>
-		<a ui-sref='schedule'>Schedule</a>
-		<!-- Trigger the modal with a button -->
-		<!-- <a data-toggle="modal" data-target="#myModal" ng-click="currentUserSignedIn = !currentUserSignedIn" ng-hide="currentUserSignedIn">Log In</a> -->
-		<a data-toggle="modal" data-target="#myModal" ng-click="login()" ng-show="!currentUserSignedIn">Log In</a>
-		<!--add feature if they are logged in that it changes to my account-->
-		<!-- remember to hide ng-hide or css hide -->
-		<a ui-sref='myaccount' ng-show="currentUserSignedIn">My Account</a>
+	<div class="menu-container" id="blah" class="close" data-dismiss="modal">
+		<a class="routes" ui-sref='home'>Home</a>
+		<a class="routes" ui-sref='about'>About</a>
+		<a class="routes" ui-sref='contact'>Contact</a>
+		<a class="routes" ui-sref='schedule'>Schedule</a>
+		<div class='login-nav-container'>
+			<a class="routes login-nav" data-toggle="modal" data-target="#myModal" ng-click="login()" ng-show="!currentUserSignedIn">Log In</a>
+		</div>
+<div class='login-nav-container'>
+		<a class="routes" ui-sref='myaccount' ng-show="currentUserSignedIn">My Account</a>
+</div>
+</div>
+</div>
 
 
-
-
-
-
+<!--START OF MODAL HAVING TO DO STYLING HERE SO BECAUSE OF FIXED PARENT OF MODAL-->
+<style>
+h4 {
+	font-size: 2rem;
+}
+/*input {
+	margin-bottom: 10px;
+	font-size: 2rem;
+	height: 4rem;
+	width: 100%;
+}*/
+.l-login-button {
+	background-color: #FF7878;
+	font-size: 1.5rem;
+	color: white;
+	height: 4rem;
+	border: none;
+	cursor: pointer;
+	width: 100%;
+}
+.fb-login-button {
+	background-color: #3B5998;
+	font-size: 1.5rem;
+	color: white;
+	height: 4rem;
+	border: none;
+	cursor: pointer;
+	width: 100%;
+}
+.g-login-button {
+	background-color: #EA4335;
+	font-size: 1.5rem;
+	color: white;
+	height: 4rem;
+	border: none;
+	cursor: pointer;
+	width: 100%;
+}
+.modal-body a {
+	padding: 0;
+}
+.modal-body p {
+	padding-top: 10px;
+	font-size: 1.3rem;
+}
+.modal-body .btn {
+	padding: 0;
+	font-size: inherit;
+	vertical-align: inherit;
+}
+</style>
+<!-- HAVE INLINE STYLING BECAUSE MODAL WONT DISPLAY WITH A FIXED PARENT-->
 		<div id="myModal" class="modal fade" role="dialog" ng-controller="loginCtrl">
 			<div class="modal-dialog">
 
@@ -38,10 +88,10 @@
 								<br>
 								<br>
 								<input type="password" class='password'type="text" placeholder="password" ng-model='customer.parent.password' >
-								<button class='login-button' type="submit">Login</button>
+								<button class='l-login-button' type="submit">Login</button>
 								<br>
 								<br> -->
-							<a href="/auth/facebook"><button class='fb-login-button' type="submit">facebook</button></a>
+							<a href="/auth/facebook"><button class='fb-login-button' >facebook</button></a>
 							<br>
 							<br>
 							<!-- <button ng-click="loginG()" class='g-login-button' type="submit">login w/ google</button> -->
@@ -68,7 +118,7 @@
 								<br>
 								<br>
 								<input type="password" class='password'type="text" placeholder="retype password" ng-model='customer.parent.password' >
-								<button class='login-button' type="submit">Create Account</button>
+								<button class='l-login-button' type="submit">Create Account</button>
 
 								<p>Already have an account? <button id="have_account" type="button" class="btn btn-link account" ng-click="loginForm = !loginForm">Login</button></p>
 							</div>
@@ -85,6 +135,5 @@
 
 
 
+
 		<!--add feature if they are logged in that it changes to my account-->
-	</div>
-</div>

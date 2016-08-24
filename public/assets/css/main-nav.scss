@@ -1,0 +1,68 @@
+$dark-main: #0097a7;
+$mt-main: #69d8De;
+$main: #00bcd4;
+$light-main: #b2ebf2;
+$action-color: #ffc107;
+$action-darken: #e6a800;
+$main-text: #ffffff;
+$primary-text: #212121;
+$secondary-text: #757575;
+$divider-color: #bdbdbd;
+// 1 Box
+// margin, padding, display, etc.
+// 2 Border & Background
+// border, border-radius, background-color, etc.
+// 3 Text
+// color, font-size, text-transform, etc.
+// 4 Other stuff
+// animations, transforms, etc.
+.logo-containter {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 100vw;
+	height: 35vh;
+	background-color: $dark-main;
+	img {
+		height: 28vh;
+	}
+}
+.menu-container {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	height: 8vh;
+	width: 100vw;
+	background-color: $mt-main;
+	z-index: 10;
+	.routes {
+		padding: 10px;
+		font-size: 1.8rem;
+		color: $main-text;
+		text-decoration: none;
+		transition: 1s;
+		align-self: center;
+	}
+	.routes:hover {
+		font-size: 1.9rem;
+		text-decoration: none;
+		cursor: pointer;
+		transition: 0.2s;
+	}
+	.login-nav-container {
+		display: flex;
+		align-content: center;
+		justify-content: center;
+		background-color: $action-color;
+		box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26);
+		height: 11vh;
+		width: 11h;
+		cursor: pointer;
+		z-index: 20;
+		border-radius: 999rem;
+		transition: 0.5s;
+	}
+	.login-nav-container:hover {
+		box-shadow: 0 3px 7px 0 rgba(0, 0, 0, 0.26);
+	}
+}

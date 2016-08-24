@@ -3,7 +3,7 @@ var db = app.get('db');
 
 
 //CRUD FUNCTIONS
-//I update the parent and create children with an id from the parent
+//While update the parent I am creating a children with an id from the parent
 module.exports = {
     postUser: function(req, res, next) {
         db.parent.update({
@@ -25,5 +25,17 @@ module.exports = {
             res.status(200).send(updatedUser);
         });
 
+    },
+    postEmail: function(req, res,next){
+      db.mailing.save({
+        email: req.body.email
+      }, function(err, email){
+        if(err) {
+          res.status(500).send(err);
+        }
+        else {
+          res.status(200).send(email);
+        }
+      });
     }
 };

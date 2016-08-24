@@ -1,0 +1,32 @@
+
+
+
+.teachers-container{
+
+  .indiv-teacher{
+    padding: 60px;
+    display: flex;
+    align-items: center;
+    justify-content:space-around;
+
+
+    .circle-image{
+      height: 350px;
+      width: 350px;
+      border-radius: 50%;
+    }
+    .teacher-blurb{
+      max-width: 50vw;
+      h3{
+        color: #69D8DE;
+        padding: 0 0 10px 0;
+      }
+      p{
+        color: grey;
+        letter-spacing: 1.2;
+        line-height: 1.2;
+      }
+    }
+  }
+
+}
