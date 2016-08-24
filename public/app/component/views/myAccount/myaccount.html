@@ -1,28 +1,29 @@
-<account-nav-directive></account-nav-directive>
-<div class="registration-container">
+<div class="account-nav-wrapper">
+  <account-nav-directive></account-nav-directive>
+  <div class="registration-container">
+    <div class="current-user">
+      <h2>Hello {{parent.name}}</h2>
+      {{parent.id}}
+    </div>
+    <div class="children" ng-repeat="child in children">
 
 
-  <div class="current-user">
-    <h2>Hello {{parent.name}}</h2>
-    {{parent.id}}
+      <!--TODO need to get age from getcurrent -->
+      <h2>children</h2>
+      {{child.name}}
+      <h3>{{child.birthdate | date : 'longDate'}}</h3>
+    </div>
+
+    <div class="current classes">
+      <h2>current classes</h2>
+    </div>
+
+
+
+
+
+
+
   </div>
-  <div class="children" ng-repeat="child in children">
-
-
-    <!--TODO need to get age from getcurrent -->
-    <h2>children</h2>
-    {{child.name}}
-    <h3>{{child.birthdate | date : 'longDate'}}</h3>
-  </div>
-
-  <div class="current classes">
-    <h2>current classes</h2>
-  </div>
-
-
-
-
-
-
 
 </div>

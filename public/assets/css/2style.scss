@@ -1,0 +1,150 @@
+@import 'https://fonts.googleapis.com/css?family=Lato:400,700';
+
+
+$dark-main: #0097a7;
+$main: #00BCD4;
+$mt-main: #69d8De;
+$light-main: #b2ebf2;
+$accent-color: #ffc107;
+$light-text: #fff;
+$primary-text: #212121;
+$secondary-text: #757575;
+$divider-color: #bdbdbd;
+
+// 1 Box
+// margin, padding, display, etc.
+// 2 Border & Background
+// border, border-radius, background-color, etc.
+// 3 Text
+// color, font-size, text-transform, etc.
+// 4 Other stuff
+// animations, transforms, etc.
+*{
+	font-family: 'lato';
+	line-height: 1.2;
+	letter-spacing: 1.2;
+	box-sizing:border-box;
+	h1 {font-size: 3.5rem;};
+	h2 {font-size: 2.7rem;};
+	h3 {font-size: 2rem;};
+	h4 {font-size: 1.7rem;};
+	h5 {font-size: 1.5rem;};
+	p {font-size: 1.3rem;
+		 color:$secondary-text;};
+}
+
+
+/* basic stylings ------------------------------------------ */
+
+
+/* starting stylings ------------------------------- */
+.group 			  {
+  position:relative;
+
+}
+input{
+	font-size:18px;
+	background-color: transparent;
+  padding:10px 10px 10px 5px;
+  width:300px;
+  border:none;
+}
+.light-input{
+  border-bottom:1px solid $light-text;//NEED TO DO BASED OFF EACH IMPUT
+}
+.dark-input {
+  border-bottom:1px solid $secondary-text ;//NEED TO DO BASED OFF EACH IMPUT
+}
+input:focus { outline:none; }
+
+/* LABEL ======================================= */
+label 				 {
+  font-size:18px;
+  position:absolute;
+  pointer-events:none;
+  left:5px;
+  top:10px;
+  transition:0.2s ease all;
+  -moz-transition:0.2s ease all;
+  -webkit-transition:0.2s ease all;
+}
+.light-label{
+  color:$light-text;//NEED TO DO BASED OFF EACH IMPUT
+}
+.dark-label{
+  color:$secondary-text;//NEED TO DO BASED OFF EACH IMPUT
+}
+
+/* active state */
+input:focus ~ label, input:valid ~ label 		{
+  top:-20px;
+  font-size:14px;
+  color:$accent-color;
+}
+
+/* BOTTOM BARS ================================= */
+.bar 	{ position:relative; display:block; width:300px; }
+.bar:before, .bar:after 	{
+  content:'';
+  height:2px;
+  width:0;
+  bottom:1px;
+  position:absolute;
+  transition:0.2s ease all;
+  -moz-transition:0.2s ease all;
+  -webkit-transition:0.2s ease all;
+}
+
+.light-bar:before, .light-bar:after 	{
+  background:$light-text;//NEED TO DO BASED OFF EACH IMPUT
+}
+
+.dark-bar:before, .dark-bar:after 	{
+  background:$secondary-text;//NEED TO DO BASED OFF EACH IMPUT
+}
+
+
+
+
+.bar:before {
+  left:50%;
+}
+.bar:after {
+  right:50%;
+}
+
+/* active state */
+input:focus ~ .bar:before, input:focus ~ .bar:after {
+  width:50%;
+}
+
+
+/* active state */
+input:focus ~ .highlight {
+  -webkit-animation:inputHighlighter 0.3s ease;
+  -moz-animation:inputHighlighter 0.3s ease;
+  animation:inputHighlighter 0.3s ease;
+}
+
+/* ANIMATIONS ================ */
+// @-webkit-keyframes inputHighlighter {
+// 	from { background:$mt-main; }
+//   to 	{ width:0; background:blue; }
+// }
+// @-moz-keyframes inputHighlighter {
+// 	from { background:$mt-main; }
+//   to 	{ width:0; background:red; }
+// }
+// @keyframes inputHighlighter {
+// 	from { background:$mt-main; }
+//   to 	{ width:0; background:black; }
+// }
+
+
+
+
+
+
+body {
+    background-image: url("./assets/images/geometry2.png");
+}

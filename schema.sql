@@ -12,7 +12,7 @@ create table parent (
 create table schedule(
   id serial primary key not null,
   start_date date,
-  class_time time,
+  class_time varchar(50),
   class_day varchar(20)
 );
 
@@ -24,4 +24,10 @@ create table child(
   birthdate date,
   parent_id integer references parent(id),
   schedule_id integer references schedule(id)
+);
+
+
+create table mailing(
+  id serial primary key not null,
+  email varchar(100) UNIQUE
 );

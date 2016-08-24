@@ -33,5 +33,15 @@ angular.module("musApp").service("myAccountServ", function($http) {
       return response.data;
     });
   };
+  this.addChildToClass = function(data){
+    return $http({
+      method: 'PUT',
+      url: '/addToCourse',
+      data: data
+    }).then(function(response){
+    });
+  };
+
+
 
 });

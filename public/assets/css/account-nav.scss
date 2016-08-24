@@ -1,8 +1,40 @@
-.account-nav-container{
+$dark-main: #0097a7;
+$main: #00BCD4;
+$mt-main: #69d8De;
+$light-main: #b2ebf2;
+$accent-color: #ffc107;
+$light-text: #fff;
+$primary-text: #212121;
+$secondary-text: #757575;
+$divider-color: #bdbdbd;
+
+
+.account-nav-wrapper{
+  margin: 20px 10vw;
   display: flex;
-  align-items: center;
-  justify-content: center;
+  background-color: #fff;
+  // max-height: 50vh;
+  // overflow: hidden;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+}
+
+
+
+.account-nav-container{
+  background-color: $main;
+  display: flex;
+  align-items: left;
+  flex-direction: column;
+  height: 100%;
+  min-width: 10vw;
+
   .account-nav{
+    color: $light-text;
+    transition: .5s;
     padding: 5px;
+    text-decoration: none;
+  }
+  .account-nav:hover{
+  background-color: $dark-main;
   }
 }

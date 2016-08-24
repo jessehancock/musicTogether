@@ -61,24 +61,67 @@ angular.module('musApp', ['ui.router'])
 	 }]
  }
  })
+
  .state('mykids', {
 	url: '/myaccount/mykids',
 	templateUrl: './app/component/views/myAccount/mykids/mykids.html',
-	controller: 'myAccountCtrl'
+	controller: 'myAccountCtrl',
+	resolve: {
+		user:["authService", "$state", function(authService, $state){
+		authService.getCurrentUser().then(function(response){
+				if(response.data.new_user === false){
+				$state.go('mykids');
+				// return response;
+			}
+			else{
+				$state.go('accountSetup');
+				alert('please log in and compelete the registration process');
+				return response;
+			}
+		});
+		}]
+	}
 	//need a resolve to get user and assign it to scope
  })
  .state('register', {
 	url: '/myaccount/register',
 	templateUrl: './app/component/views/myAccount/register/register.html',
-	controller: 'myAccountCtrl'
-	//need a resolve to get user and assign it to scope
+	controller: 'myAccountCtrl',
+	resolve: {
+		user:["authService", "$state", function(authService, $state){
+		authService.getCurrentUser().then(function(response){
+				if(response.data.new_user === false){
+				$state.go('register');
+				// return response;
+			}
+			else{
+				$state.go('accountSetup');
+				alert('please log in and compelete the registration process');
+				return response;
+			}
+		});
+		}]
+	}
  })
- .state('myschedule', {
-	url: '/myaccount/myschedule',
-	templateUrl: './app/component/views/myAccount/myschedule/myschedule.html',
-	controller: 'myAccountCtrl'
-	//need a resolve to get user and assign it to scope
-	//TODO
+ .state('editaccount', {
+	url: '/myaccount/editaccount',
+	templateUrl: './app/component/views/myAccount/editaccount/editaccount.html',
+	controller: 'myAccountCtrl',
+	resolve: {
+		user:["authService", "$state", function(authService, $state){
+		authService.getCurrentUser().then(function(response){
+				if(response.data.new_user === false){
+				$state.go('editaccount');
+				// return response;
+			}
+			else{
+				$state.go('accountSetup');
+				alert('please log in and compelete the registration process');
+				return response;
+			}
+		});
+		}]
+	}
  });
 
 
@@ -199,24 +242,47 @@ angular.module('musApp')
 .directive('footerDirective', function(){
   return{
     templateUrl: './app/component/views/footer/footer-tmpl.html',
-    restrict: 'EA'
+    restrict: 'EA',
+    controller: ["$scope", "footerServ", function($scope, footerServ){
+      $scope.addEmail = function(email) {
+          footerServ.addEmail(email).then(function(response){
+            console.log(response);
+            alert("thanks for joining " + response.data.email);
+            //TODO: alert when email is already entered
+          });
+      };
+    }]
   };
 });
 
+angular.module("musApp").service("footerServ", ["$http", function($http) {
+
+  this.addEmail = function(email) {
+    console.log('footerServ', email);
+    return $http({
+      method: 'POST',
+      url: '/mailinglist',
+      data: {email: email}
+    });
+  };
+
+
+}]);
+
 angular.module('musApp').controller('loginCtrl', ["$scope", "loginServ", function($scope, loginServ){
 
-	// $scope.login = function(){
-	// 	var onSuccessCallback = function(data){
-	// 		currentUserSignedIn = true;
-	// 	};
-	// };
+	$scope.login = function(){
+		var onSuccessCallback = function(data){
+			currentUserSignedIn = true;
+		};
+	};
 
 
 
 }]);
 
 angular.module('musApp').service("loginServ", ["$http", function($http){
-  
+
 
 }]);
 
@@ -225,40 +291,76 @@ angular.module('musApp')
         return {
             templateUrl: './app/component/views/main-nav/main-nav-tmpl.html',
             restrict: 'EA',
-            controller: ["$scope", "authService", function($scope, authService){
-              $scope.currentUserSignedIn = false;
-              authService.getCurrentUser().then(function(response){
-                if(response.data) $scope.currentUserSignedIn = true;
-                else $scope.currentUserSignedIn = false;
-              });
-            }]
+            controller: ["$scope", "authService", function($scope, authService) {
+                $scope.currentUserSignedIn = false;
+                authService.getCurrentUser().then(function(response) {
+                    if (response.data) $scope.currentUserSignedIn = true;
+                    else $scope.currentUserSignedIn = false;
+                });
+            }],
+            link: function(elem, attr, scope) {
+
+                $(document).ready(function() {
+                  $(window).scroll(function() {
+                    // $('#myModal').appendTo("body").modal('show');
+                    var y = document.body.scrollTop;
+                    if(y >= 228){
+                      $(".menu-container").css({"position": "fixed", "top": "15", "box-shadow": "0 6px 20px 0 rgba(0, 0, 0, 0.19)"} );
+                    }
+                    else {
+                      $(".menu-container").css({"position": "inherit"});
+                    }
+
+                  });
+                });
+
+            }
         };
+
     });
 
 // ============================================================
 angular.module("musApp").controller("myAccountCtrl", ["$scope", "myAccountServ", "$rootScope", function($scope, myAccountServ, $rootScope) {
 
-  $scope.getClassSchedule = function(){
-    myAccountServ.getClassSchedule().then(function(response){
-      $scope.schedule = response;
-    });
-  };
+    $scope.getClassSchedule = function() {
+        myAccountServ.getClassSchedule().then(function(response) {
+            $scope.schedule = response;
+        });
+    };
+    $scope.getClassSchedule();
 
-  $scope.getCurrentUser = function(){
-    myAccountServ.getCurrentUser().then(function(response, $rootScope){
-      $scope.parent = response;
-      //I call this hear so that I already have a parent.id back
-      $scope.getCurrentUserChildren($scope.parent.id);
-    });
-  };
-  $scope.getCurrentUser();
+    $scope.getCurrentUser = function() {
+        myAccountServ.getCurrentUser().then(function(response, $rootScope) {
+            $scope.parent = response;
+            //I call this hear so that I already have a parent.id back
+            $scope.getCurrentUserChildren($scope.parent.id);
+        });
+    };
+    $scope.getCurrentUser();
 
-  $scope.getCurrentUserChildren = function(id){
-    myAccountServ.getCurrentUserChildren(id).then(function(response){
-      console.log(response);
-      $scope.children = response;
-    });
-  };
+    $scope.getCurrentUserChildren = function(id) {
+        myAccountServ.getCurrentUserChildren(id).then(function(response) {
+            $scope.children = response;
+        });
+    };
+
+    $scope.addChildToClass = function(course, child) {
+        var data = {
+          // TODO: HELP THIS IS WHERE THE PROBLEM IS
+            course: course.toString(),
+            child: child.toString()
+        };
+        myAccountServ.addChildToClass(data).then(function(response) {
+            alert('thank you for registering');
+        });
+
+    };
+
+    $scope.addClassToScope = function(course){
+      console.log(course);
+      $scope.course = course;
+    };
+
 
 }]);
 
@@ -297,6 +399,16 @@ angular.module("musApp").service("myAccountServ", ["$http", function($http) {
       return response.data;
     });
   };
+  this.addChildToClass = function(data){
+    return $http({
+      method: 'PUT',
+      url: '/addToCourse',
+      data: data
+    }).then(function(response){
+    });
+  };
+
+
 
 }]);
 
@@ -320,7 +432,6 @@ angular.module('musApp')
             restrict: 'EA'
         };
     });
-
 
 // INITILIZE CONTROLLER
 // ============================================================
