@@ -85,7 +85,19 @@ passport.deserializeUser(function(obj, done) {
 
 
 app.get('/me', function(req, res) {
-    res.status(200).json(req.user);
+  console.log('me', req.user);
+    db.get_children(req.user.id, function(err, response) {
+      console.log(err, response);
+      if(err)res.status(500).send(err);
+      else {
+        req.user.children = response;
+        console.log('children added: ', req.user);
+        res.status(200).send(req.user);
+      }
+    });
+
+    // res.status(200).json(req.user);
+
 });
 
 app.get('/logout', function(req, res){
@@ -104,7 +116,7 @@ var _delete = require('./controller/update');
 //GET ENDPOINTS
 app.get('/classSchedule', read.getSchedule);
 app.get('/mykids/:id', read.getCurrentUserKids);
-
+app.put('/kidSchedule', read.displayCurrentChildSchedule);
 //POST ENDPOINTS
 app.post('/updateUser', create.postUser);
 app.post('/mailinglist', create.postEmail);

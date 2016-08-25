@@ -22,16 +22,24 @@ angular.module("musApp").service("myAccountServ", function($http) {
   };
 
   this.getCurrentUserChildren = function(id){
-    console.log('step2' + id);
     return $http({
       method: 'GET',
       url: '/mykids/' + id
     }).then(function(response) {
-      console.log('step3' + response);
       // TODO get this date function to calc age
       // var today = new Date(99,5,24);
       // var age = today - response.data[0].birthdate;
       // console.log('from service', age, today);
+      return response.data;
+    });
+  };
+  this.displayCurrentChildSchedule = function(children){
+    // console.log('step2: ' + JSON.stringify(children, null, 4));
+    return $http({
+      method: 'PUT',
+      url: '/kidSchedule',
+      data: children
+    }).then(function(response) {
       return response.data;
     });
   };

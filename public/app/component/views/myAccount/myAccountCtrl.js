@@ -5,26 +5,30 @@ angular.module("musApp").controller("myAccountCtrl", function($scope, myAccountS
         myAccountServ.getClassSchedule().then(function(response) {
             $scope.schedule = response;
         });
-    };
-    $scope.getClassSchedule();
+    }();
 
     $scope.getCurrentUser = function() {
         myAccountServ.getCurrentUser().then(function(response, $rootScope) {
-            console.log('this might be the answer' + response.id);
             $scope.parent = response;
-            $scope.getCurrentUserChildren(response.id);
-            //I call this hear so that I already have a parent.id back
         });
-    };
-    $scope.getCurrentUser();
+    }();
 
     $scope.getCurrentUserChildren = function(id) {
         myAccountServ.getCurrentUserChildren(id).then(function(response) {
             $scope.children = response;
+            console.log(response, 'SHOULD I DELETE THIS?');
+        $scope.updateCurrentChildSchedule(response);
         });
-    };
+    }('hello');
 
-    // $scope.getCurrentUserChildren(id);
+
+
+$scope.updateCurrentChildSchedule = function(children) {
+    myAccountServ.displayCurrentChildSchedule(children).then(function(response) {
+      $scope.childSchedule = response;
+    });
+};
+
 
 
     $scope.addChildToClass = function(course, child) {
@@ -34,6 +38,7 @@ angular.module("musApp").controller("myAccountCtrl", function($scope, myAccountS
             child: child.toString()
         };
         myAccountServ.addChildToClass(data).then(function(response) {
+            // console.log(response);
             alert('thank you for registering');
         });
 

@@ -3,20 +3,16 @@
   <div class="registration-container">
     <div class="current-user">
       <h2>Hello {{parent.name}}</h2>
-      {{parent.id}}
     </div>
-    <div class="children" ng-repeat="child in children">
-
-
+    <div class="children" ng-repeat="child in parent.children">
       <!--TODO need to get age from getcurrent -->
-      <h2>children</h2>
-      {{child.name}}
-      <h3>{{child.birthdate | date : 'longDate'}}</h3>
+      <h3>{{child.name}}</h3>
+      <p>{{child.birthdate | date : 'longDate'}}</p>
+      <h3>Current Class</h3>
+      {{child.class_day}}
+      {{child.class_time}}
     </div>
 
-    <div class="current classes">
-      <h2>current classes</h2>
-    </div>
 
 
 

@@ -42,7 +42,7 @@
         <h4 class="modal-title">{{course.class_day}} {{course.class_time}}</h4>
       </div>
       <div class="modal-body flex">
-        <div class="children" ng-repeat="child in children">
+        <div class="children" ng-repeat="child in parent.children ">
           <h3>{{child.name}}</h3>
             <button class="btn btn-default" ng-click="addChildToClass(course.id, child.id)">Add To Class</button>
         </div>

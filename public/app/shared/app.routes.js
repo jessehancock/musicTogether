@@ -25,11 +25,11 @@ angular.module('musApp', ['ui.router'])
  	templateUrl: './app/component/views/accountSetup/account-setup.html',
  	controller: 'accountSetupCtrl',
 	resolve: {
-		user: function(authService, $state) {
+		user: function(myAccountServ, $state) {
 
-			authService.getCurrentUser().then(function(response) {
+			myAccountServ.getCurrentUser().then(function(response) {
 				console.log('this was hit 2');
-				if(response.data.new_user === false) {
+				if(response.new_user === false) {
 					$state.go('myaccount');
 				}
 				else if(response.data === ""){
@@ -44,9 +44,10 @@ angular.module('musApp', ['ui.router'])
  templateUrl: './app/component/views/myAccount/myaccount.html',
  controller: 'myAccountCtrl',
  resolve: {
-	 user:function(authService, $state){
-	 authService.getCurrentUser().then(function(response){
-			 if(response.data.new_user === false){
+	 user:function(myAccountServ, $state){
+	 myAccountServ.getCurrentUser().then(function(response){
+		 console.log('from routes', response);
+			 if(response.new_user === false){
 			 $state.go('myaccount');
 			 // return response;
 		 }
@@ -65,9 +66,9 @@ angular.module('musApp', ['ui.router'])
 	templateUrl: './app/component/views/myAccount/mykids/mykids.html',
 	controller: 'myAccountCtrl',
 	resolve: {
-		user:function(authService, $state){
-		authService.getCurrentUser().then(function(response){
-				if(response.data.new_user === false){
+		user:function(myAccountServ, $state){
+		myAccountServ.getCurrentUser().then(function(response){
+				if(response.new_user === false){
 				$state.go('mykids');
 				// return response;
 			}
@@ -86,9 +87,9 @@ angular.module('musApp', ['ui.router'])
 	templateUrl: './app/component/views/myAccount/register/register.html',
 	controller: 'myAccountCtrl',
 	resolve: {
-		user:function(authService, $state){
-		authService.getCurrentUser().then(function(response){
-				if(response.data.new_user === false){
+		user:function(myAccountServ, $state){
+		myAccountServ.getCurrentUser().then(function(response){
+				if(response.new_user === false){
 				$state.go('register');
 				// return response;
 			}
@@ -106,9 +107,9 @@ angular.module('musApp', ['ui.router'])
 	templateUrl: './app/component/views/myAccount/editaccount/editaccount.html',
 	controller: 'myAccountCtrl',
 	resolve: {
-		user:function(authService, $state){
-		authService.getCurrentUser().then(function(response){
-				if(response.data.new_user === false){
+		user:function(myAccountServ, $state){
+		myAccountServ.getCurrentUser().then(function(response){
+				if(response.new_user === false){
 				$state.go('editaccount');
 				// return response;
 			}

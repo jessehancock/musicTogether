@@ -27,11 +27,11 @@ angular.module('musApp', ['ui.router'])
  	templateUrl: './app/component/views/accountSetup/account-setup.html',
  	controller: 'accountSetupCtrl',
 	resolve: {
-		user: ["authService", "$state", function(authService, $state) {
+		user: ["myAccountServ", "$state", function(myAccountServ, $state) {
 
-			authService.getCurrentUser().then(function(response) {
+			myAccountServ.getCurrentUser().then(function(response) {
 				console.log('this was hit 2');
-				if(response.data.new_user === false) {
+				if(response.new_user === false) {
 					$state.go('myaccount');
 				}
 				else if(response.data === ""){
@@ -46,9 +46,10 @@ angular.module('musApp', ['ui.router'])
  templateUrl: './app/component/views/myAccount/myaccount.html',
  controller: 'myAccountCtrl',
  resolve: {
-	 user:["authService", "$state", function(authService, $state){
-	 authService.getCurrentUser().then(function(response){
-			 if(response.data.new_user === false){
+	 user:["myAccountServ", "$state", function(myAccountServ, $state){
+	 myAccountServ.getCurrentUser().then(function(response){
+		 console.log('from routes', response);
+			 if(response.new_user === false){
 			 $state.go('myaccount');
 			 // return response;
 		 }
@@ -67,9 +68,9 @@ angular.module('musApp', ['ui.router'])
 	templateUrl: './app/component/views/myAccount/mykids/mykids.html',
 	controller: 'myAccountCtrl',
 	resolve: {
-		user:["authService", "$state", function(authService, $state){
-		authService.getCurrentUser().then(function(response){
-				if(response.data.new_user === false){
+		user:["myAccountServ", "$state", function(myAccountServ, $state){
+		myAccountServ.getCurrentUser().then(function(response){
+				if(response.new_user === false){
 				$state.go('mykids');
 				// return response;
 			}
@@ -88,9 +89,9 @@ angular.module('musApp', ['ui.router'])
 	templateUrl: './app/component/views/myAccount/register/register.html',
 	controller: 'myAccountCtrl',
 	resolve: {
-		user:["authService", "$state", function(authService, $state){
-		authService.getCurrentUser().then(function(response){
-				if(response.data.new_user === false){
+		user:["myAccountServ", "$state", function(myAccountServ, $state){
+		myAccountServ.getCurrentUser().then(function(response){
+				if(response.new_user === false){
 				$state.go('register');
 				// return response;
 			}
@@ -108,9 +109,9 @@ angular.module('musApp', ['ui.router'])
 	templateUrl: './app/component/views/myAccount/editaccount/editaccount.html',
 	controller: 'myAccountCtrl',
 	resolve: {
-		user:["authService", "$state", function(authService, $state){
-		authService.getCurrentUser().then(function(response){
-				if(response.data.new_user === false){
+		user:["myAccountServ", "$state", function(myAccountServ, $state){
+		myAccountServ.getCurrentUser().then(function(response){
+				if(response.new_user === false){
 				$state.go('editaccount');
 				// return response;
 			}
@@ -324,26 +325,30 @@ angular.module("musApp").controller("myAccountCtrl", ["$scope", "myAccountServ",
         myAccountServ.getClassSchedule().then(function(response) {
             $scope.schedule = response;
         });
-    };
-    $scope.getClassSchedule();
+    }();
 
     $scope.getCurrentUser = function() {
         myAccountServ.getCurrentUser().then(function(response, $rootScope) {
-            console.log('this might be the answer' + response.id);
             $scope.parent = response;
-            $scope.getCurrentUserChildren(response.id);
-            //I call this hear so that I already have a parent.id back
         });
-    };
-    $scope.getCurrentUser();
+    }();
 
     $scope.getCurrentUserChildren = function(id) {
         myAccountServ.getCurrentUserChildren(id).then(function(response) {
             $scope.children = response;
+            console.log(response, 'SHOULD I DELETE THIS?');
+        $scope.updateCurrentChildSchedule(response);
         });
-    };
+    }('hello');
 
-    // $scope.getCurrentUserChildren(id);
+
+
+$scope.updateCurrentChildSchedule = function(children) {
+    myAccountServ.displayCurrentChildSchedule(children).then(function(response) {
+      $scope.childSchedule = response;
+    });
+};
+
 
 
     $scope.addChildToClass = function(course, child) {
@@ -353,6 +358,7 @@ angular.module("musApp").controller("myAccountCtrl", ["$scope", "myAccountServ",
             child: child.toString()
         };
         myAccountServ.addChildToClass(data).then(function(response) {
+            // console.log(response);
             alert('thank you for registering');
         });
 
@@ -398,16 +404,24 @@ angular.module("musApp").service("myAccountServ", ["$http", function($http) {
   };
 
   this.getCurrentUserChildren = function(id){
-    console.log('step2' + id);
     return $http({
       method: 'GET',
       url: '/mykids/' + id
     }).then(function(response) {
-      console.log('step3' + response);
       // TODO get this date function to calc age
       // var today = new Date(99,5,24);
       // var age = today - response.data[0].birthdate;
       // console.log('from service', age, today);
+      return response.data;
+    });
+  };
+  this.displayCurrentChildSchedule = function(children){
+    // console.log('step2: ' + JSON.stringify(children, null, 4));
+    return $http({
+      method: 'PUT',
+      url: '/kidSchedule',
+      data: children
+    }).then(function(response) {
       return response.data;
     });
   };
