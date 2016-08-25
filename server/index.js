@@ -115,8 +115,8 @@ var _delete = require('./controller/update');
 
 //GET ENDPOINTS
 app.get('/classSchedule', read.getSchedule);
-app.get('/mykids/:id', read.getCurrentUserKids);
-app.put('/kidSchedule', read.displayCurrentChildSchedule);
+// app.get('/mykids/:id', read.getCurrentUserKids);
+// app.put('/kidSchedule', read.displayCurrentChildSchedule);
 //POST ENDPOINTS
 app.post('/updateUser', create.postUser);
 app.post('/mailinglist', create.postEmail);

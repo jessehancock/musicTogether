@@ -128,59 +128,6 @@ angular.module('musApp', ['ui.router'])
 
 }]);
 
-
-          // INITILIZE SERVICE
-          // ============================================================
-          angular.module('musApp').service("authService", ["$http", function($http) {
-            // AUTH FUNCTIONS
-            // ============================================================
-            // this.login = function(user) {
-            //   return $http({
-            //     method: 'post',
-            //     url: '/login',
-            //     data: user
-            //   }).then(function(response) {
-            //     return response;
-            //   });
-            // };
-            // this.logout = function() {
-            //   return $http({
-            //     method: 'get',
-            //     url: '/logout'
-            //   }).then(function(response) {
-            //     return response;
-            //   });
-            // };
-            this.getCurrentUser = function() {
-              return $http({
-                method: 'GET',
-                url: '/me'
-              }).then(function(response) {
-                return response;
-              });
-            };
-            // this.registerUser = function(user) {
-            //   return $http({
-            //     method: 'POST',
-            //     url: '/register',
-            //     data: user
-            //   }).then(function(response) {
-            //     return response;
-            //   });
-            // };
-            // this.editUser = function(id, user) {
-            //   return $http({
-            //     method: 'PUT',
-            //     url: "/user/" + id,
-            //     data: user
-            //   }).then(function(response) {
-            //     return response;
-            //   });
-            // };
-            // OTHER FUNCTIONS
-            // ============================================================
-          }]);
-
 // INITILIZE CONTROLLER
 // ============================================================
 angular.module("musApp").controller("accountSetupCtrl", ["$scope", "accountSetupServ", "$state", function($scope, accountSetupServ, $state) {
@@ -282,7 +229,7 @@ $scope.currentUserSignedIn = false;
 	$scope.getUser = function () {
 		myAccountServ.getCurrentUser().then(function(response) {
 			console.log('TEST TO SEE', response);
-				(response.data)? $scope.currentUserSignedIn = true : $scope.currentUserSignedIn = false;
+				(response)? $scope.currentUserSignedIn = true : $scope.currentUserSignedIn = false;
 		});
 	};
 
@@ -317,10 +264,6 @@ angular.module('musApp')
         };
 
     });
-
-// ============================================================
-//I HAVE THIS CLEAN RIGHT NOW
-
 
 angular.module("musApp").controller("myAccountCtrl", ["$scope", "myAccountServ", "$rootScope", "$state", function($scope, myAccountServ, $rootScope, $state) {
 
@@ -373,14 +316,6 @@ angular.module("musApp").controller("myAccountCtrl", ["$scope", "myAccountServ",
 angular.module("musApp").service("myAccountServ", ["$http", function($http) {
   // CRUD FUNCTIONS
   // ============================================================
-  this.getClassSchedule = function() {
-    return $http({
-      method: 'GET',
-      url: '/classSchedule'
-    }).then(function(response) {
-      return response.data;
-    });
-  };
 
   this.getCurrentUser = function() {
     return $http({
@@ -391,28 +326,15 @@ angular.module("musApp").service("myAccountServ", ["$http", function($http) {
     });
   };
 
-  this.getCurrentUserChildren = function(id){
+  this.getClassSchedule = function() {
     return $http({
       method: 'GET',
-      url: '/mykids/' + id
-    }).then(function(response) {
-      // TODO get this date function to calc age
-      // var today = new Date(99,5,24);
-      // var age = today - response.data[0].birthdate;
-      // console.log('from service', age, today);
-      return response.data;
-    });
-  };
-  this.displayCurrentChildSchedule = function(children){
-    // console.log('step2: ' + JSON.stringify(children, null, 4));
-    return $http({
-      method: 'PUT',
-      url: '/kidSchedule',
-      data: children
+      url: '/classSchedule'
     }).then(function(response) {
       return response.data;
     });
   };
+
   this.addChildToClass = function(data){
     return $http({
       method: 'PUT',

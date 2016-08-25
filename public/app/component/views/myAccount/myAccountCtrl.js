@@ -1,7 +1,3 @@
-// ============================================================
-//I HAVE THIS CLEAN RIGHT NOW
-
-
 angular.module("musApp").controller("myAccountCtrl", function($scope, myAccountServ, $rootScope, $state) {
 
 

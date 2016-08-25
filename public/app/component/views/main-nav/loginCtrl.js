@@ -12,7 +12,7 @@ $scope.currentUserSignedIn = false;
 	$scope.getUser = function () {
 		myAccountServ.getCurrentUser().then(function(response) {
 			console.log('TEST TO SEE', response);
-				(response.data)? $scope.currentUserSignedIn = true : $scope.currentUserSignedIn = false;
+				(response)? $scope.currentUserSignedIn = true : $scope.currentUserSignedIn = false;
 		});
 	};
 
