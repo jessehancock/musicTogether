@@ -1,5 +1,16 @@
 // ============================================================
+//I HAVE THIS CLEAN RIGHT NOW
+
+
 angular.module("musApp").controller("myAccountCtrl", function($scope, myAccountServ, $rootScope, $state) {
+
+
+  $scope.getCurrentUser = function() {
+      myAccountServ.getCurrentUser().then(function(response, $rootScope) {
+          $scope.parent = response;
+      });
+  }();
+
 
     $scope.getClassSchedule = function() {
         myAccountServ.getClassSchedule().then(function(response) {
@@ -7,28 +18,10 @@ angular.module("musApp").controller("myAccountCtrl", function($scope, myAccountS
         });
     }();
 
-    $scope.getCurrentUser = function() {
-        myAccountServ.getCurrentUser().then(function(response, $rootScope) {
-            $scope.parent = response;
-        });
-    }();
-
-    $scope.getCurrentUserChildren = function(id) {
-        myAccountServ.getCurrentUserChildren(id).then(function(response) {
-            $scope.children = response;
-            console.log(response, 'SHOULD I DELETE THIS?');
-        $scope.updateCurrentChildSchedule(response);
-        });
-    }('hello');
-
-
-
-$scope.updateCurrentChildSchedule = function(children) {
-    myAccountServ.displayCurrentChildSchedule(children).then(function(response) {
-      $scope.childSchedule = response;
-    });
-};
-
+//This adds scope to the models in the register tab
+    $scope.addClassToScope = function(course){
+      $scope.course = course;
+    };
 
 
     $scope.addChildToClass = function(course, child) {
@@ -43,11 +36,6 @@ $scope.updateCurrentChildSchedule = function(children) {
         });
 
     };
-
-    $scope.addClassToScope = function(course){
-      $scope.course = course;
-    };
-
 
     $scope.logout = function() {
         myAccountServ.logout().then(function(response) {

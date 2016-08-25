@@ -134,23 +134,23 @@ angular.module('musApp', ['ui.router'])
           angular.module('musApp').service("authService", ["$http", function($http) {
             // AUTH FUNCTIONS
             // ============================================================
-            this.login = function(user) {
-              return $http({
-                method: 'post',
-                url: '/login',
-                data: user
-              }).then(function(response) {
-                return response;
-              });
-            };
-            this.logout = function() {
-              return $http({
-                method: 'get',
-                url: '/logout'
-              }).then(function(response) {
-                return response;
-              });
-            };
+            // this.login = function(user) {
+            //   return $http({
+            //     method: 'post',
+            //     url: '/login',
+            //     data: user
+            //   }).then(function(response) {
+            //     return response;
+            //   });
+            // };
+            // this.logout = function() {
+            //   return $http({
+            //     method: 'get',
+            //     url: '/logout'
+            //   }).then(function(response) {
+            //     return response;
+            //   });
+            // };
             this.getCurrentUser = function() {
               return $http({
                 method: 'GET',
@@ -159,24 +159,24 @@ angular.module('musApp', ['ui.router'])
                 return response;
               });
             };
-            this.registerUser = function(user) {
-              return $http({
-                method: 'POST',
-                url: '/register',
-                data: user
-              }).then(function(response) {
-                return response;
-              });
-            };
-            this.editUser = function(id, user) {
-              return $http({
-                method: 'PUT',
-                url: "/user/" + id,
-                data: user
-              }).then(function(response) {
-                return response;
-              });
-            };
+            // this.registerUser = function(user) {
+            //   return $http({
+            //     method: 'POST',
+            //     url: '/register',
+            //     data: user
+            //   }).then(function(response) {
+            //     return response;
+            //   });
+            // };
+            // this.editUser = function(id, user) {
+            //   return $http({
+            //     method: 'PUT',
+            //     url: "/user/" + id,
+            //     data: user
+            //   }).then(function(response) {
+            //     return response;
+            //   });
+            // };
             // OTHER FUNCTIONS
             // ============================================================
           }]);
@@ -268,7 +268,7 @@ angular.module("musApp").service("footerServ", ["$http", function($http) {
 
 }]);
 
-angular.module('musApp').controller('loginCtrl', ["$scope", "authService", function($scope, authService){
+angular.module('musApp').controller('loginCtrl', ["$scope", "myAccountServ", function($scope, myAccountServ){
 
 
 $scope.currentUserSignedIn = false;
@@ -280,8 +280,8 @@ $scope.currentUserSignedIn = false;
 	};
 
 	$scope.getUser = function () {
-		authService.getCurrentUser().then(function(response) {
-			console.log(response);
+		myAccountServ.getCurrentUser().then(function(response) {
+			console.log('TEST TO SEE', response);
 				(response.data)? $scope.currentUserSignedIn = true : $scope.currentUserSignedIn = false;
 		});
 	};
@@ -319,7 +319,18 @@ angular.module('musApp')
     });
 
 // ============================================================
+//I HAVE THIS CLEAN RIGHT NOW
+
+
 angular.module("musApp").controller("myAccountCtrl", ["$scope", "myAccountServ", "$rootScope", "$state", function($scope, myAccountServ, $rootScope, $state) {
+
+
+  $scope.getCurrentUser = function() {
+      myAccountServ.getCurrentUser().then(function(response, $rootScope) {
+          $scope.parent = response;
+      });
+  }();
+
 
     $scope.getClassSchedule = function() {
         myAccountServ.getClassSchedule().then(function(response) {
@@ -327,28 +338,10 @@ angular.module("musApp").controller("myAccountCtrl", ["$scope", "myAccountServ",
         });
     }();
 
-    $scope.getCurrentUser = function() {
-        myAccountServ.getCurrentUser().then(function(response, $rootScope) {
-            $scope.parent = response;
-        });
-    }();
-
-    $scope.getCurrentUserChildren = function(id) {
-        myAccountServ.getCurrentUserChildren(id).then(function(response) {
-            $scope.children = response;
-            console.log(response, 'SHOULD I DELETE THIS?');
-        $scope.updateCurrentChildSchedule(response);
-        });
-    }('hello');
-
-
-
-$scope.updateCurrentChildSchedule = function(children) {
-    myAccountServ.displayCurrentChildSchedule(children).then(function(response) {
-      $scope.childSchedule = response;
-    });
-};
-
+//This adds scope to the models in the register tab
+    $scope.addClassToScope = function(course){
+      $scope.course = course;
+    };
 
 
     $scope.addChildToClass = function(course, child) {
@@ -363,11 +356,6 @@ $scope.updateCurrentChildSchedule = function(children) {
         });
 
     };
-
-    $scope.addClassToScope = function(course){
-      $scope.course = course;
-    };
-
 
     $scope.logout = function() {
         myAccountServ.logout().then(function(response) {
