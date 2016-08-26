@@ -1,3 +1,4 @@
-select * from child
-JOIN schedule on child.schedule_id = schedule.id
-where child.parent_id =  $1;
+SELECT *
+FROM child
+LEFT JOIN schedule ON child.schedule_id = schedule.id
+WHERE child.parent_id = $1;

@@ -68,7 +68,7 @@ app.get('/auth/facebook/callback', passport.authenticate('facebook', {
     successRedirect: '/#/accountSetup',
     failureRedirect: '/auth/facebook'
 }), function(req, res) {
-    console.log(req.user);
+
 });
 
 
@@ -85,13 +85,10 @@ passport.deserializeUser(function(obj, done) {
 
 
 app.get('/me', function(req, res) {
-  console.log('me', req.user);
     db.get_children(req.user.id, function(err, response) {
-      console.log(err, response);
       if(err)res.status(500).send(err);
       else {
         req.user.children = response;
-        console.log('children added: ', req.user);
         res.status(200).send(req.user);
       }
     });
@@ -122,7 +119,7 @@ app.post('/updateUser', create.postUser);
 app.post('/mailinglist', create.postEmail);
 
 //PUT
-app.put('/addToCourse', update.addToClass);
+app.put('/addToCourse', update.addToCourse);
 
 
 
