@@ -11,7 +11,7 @@ angular.module('musApp')
                     // $('#myModal').appendTo("body").modal('show');
                     var y = document.body.scrollTop;
                     if(y >= 228){
-                      $(".menu-container").css({"position": "fixed", "top": "15", "box-shadow": "0 6px 20px 0 rgba(0, 0, 0, 0.19)"} );
+                      $(".menu-container").css({"position": "fixed", "top": "0  ", "box-shadow": "0 6px 20px 0 rgba(0, 0, 0, 0.19)"} );
                     }
                     else {
                       $(".menu-container").css({"position": "inherit"});

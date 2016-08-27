@@ -5,7 +5,8 @@ create table parent (
   email varchar(100) UNIQUE,
   password varchar(50),
   facebook_id varchar(255),
-  new_user boolean default true
+  new_user boolean default true,
+  reg_fee_paid boolean default false
 );
 
 
@@ -19,11 +20,11 @@ create table schedule(
 
 
 create table child(
-  id serial primary key not null,
+  c_id serial primary key not null,
   name varchar(34),
   birthdate date,
-  parent_id integer references parent(id),
-  schedule_id integer references schedule(id)
+  parent_id integer references parent,
+  schedule_id integer references schedule
 );
 
 

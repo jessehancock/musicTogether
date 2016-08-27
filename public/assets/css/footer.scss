@@ -25,14 +25,19 @@ $divider-color: #bdbdbd;
   display: flex;
   width: 45vw;
   height: 100%;
-    .half-thirds{
+    .half-half{
       display: flex;
-      justify-content: center;
-      // align-content: center;
+      flex-direction: column;
+      align-items: center;
       height: 43.33%;
       width: 45vw;
+      .footer-button{
+        outline: none;
+        background-color: $main;
+        margin-top: 10px;
+        width: 300px;
+      }
       img{
-        margin-top: 20px;
         align-self: center;
         height: 14vh;
       }
@@ -65,8 +70,3 @@ copyright{
 
 
 }
-  .testbutton{
-    background-color: red;
-    height: 50px;
-    width: 50px;
-  }

@@ -34,10 +34,28 @@ $divider-color: #bdbdbd;
 }
 
 
-/* basic stylings ------------------------------------------ */
+.light-button{
+	background-color: transparent;
+	color: $light-text;
+	outline: 1px $light-text solid;
+}
+
+.dark-button{
+	background-color: transparent;
+	color: $dark-main;
+	border-color: $dark-main;
+}
+
+.light-button:hover{
+	color: $accent-color;
+}
+
+.light-button:focus{
+	color: $light-text;
+	outline: 1px $accent-color solid;
+}
 
 
-/* starting stylings ------------------------------- */
 .group 			  {
   position:relative;
 
@@ -46,7 +64,7 @@ input{
 	font-size:18px;
 	background-color: transparent;
   padding:10px 10px 10px 5px;
-  width:300px;
+  width:280px;
   border:none;
 }
 .light-input{
@@ -83,7 +101,7 @@ input:focus ~ label, input:valid ~ label 		{
 }
 
 /* BOTTOM BARS ================================= */
-.bar 	{ position:relative; display:block; width:300px; }
+.bar 	{ position:relative; display:block; width:280px; }
 .bar:before, .bar:after 	{
   content:'';
   height:2px;

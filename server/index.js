@@ -85,7 +85,7 @@ passport.deserializeUser(function(obj, done) {
 
 
 app.get('/me', function(req, res) {
-    db.get_children(req.user.id, function(err, response) {
+    db.get_children(req.user.id, function(err, response) {  
       if(err)res.status(500).send(err);
       else {
         req.user.children = response;

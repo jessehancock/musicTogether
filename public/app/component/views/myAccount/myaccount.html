@@ -1,17 +1,84 @@
-<div class="account-nav-wrapper">
-  <account-nav-directive></account-nav-directive>
-  <div class="registration-container">
+
+  <!-- <account-nav-directive></account-nav-directive> -->
+  <div class="myaccount-container">
     <div class="current-user">
-      <h2>Hello {{parent.name}}</h2>
+      <h1>Hello {{parent.name}}</h1>
     </div>
-    <div class="children" ng-repeat="child in parent.children">
-      <!--TODO need to get age from getcurrent -->
-      <h3>{{child.name}}</h3>
-      <p>{{child.birthdate | date : 'longDate'}}</p>
-      <h3>Current Class</h3>
-      {{child.class_day}}
-      {{child.class_time}}
+
+
+<div class="children-wrapper">
+  <div class='myaccount-child' ng-repeat="child in parent.children">
+    <h3>{{child.name}}</h3>
+    <p>{{child.birthdate | ageFilter}}</p>
+    <h5>Current Class</h5>
+    <div ng-show="child.length.schedule_id">None</div>
+    <!--TODO: make it so that this will show when the child is not registered for a class  -->
+    {{child.start_date | date : "fullDate"}}
+    {{child.class_time}}
+  </div>
+</div>
+
+
+
+
+
+
+
+  <!-- <div class="group schedule-group">
+      <input class="dark-input searchClass" type="text" name="name" ng-model="search.$" ng-model="email" type="text" required>
+      <span class="highlight"></span>
+      <span class="bar dark-bar"></span>
+      <label >Try Searching</label>
+  </div> -->
+
+  <h2>Register</h2>
+  <!--TODO: make it so you can search by date   -->
+  <div data-toggle="modal" data-target="#registerModal" class="moda-content schedule-container">
+
+
+      <div class="signup" ng-click="addClassToScope(class)" ng-repeat="class in schedule | filter:search | orderBy:'id' ">
+          <p Day</p>
+          <h3>{{class.class_day}}</h3>
+          <p>Time</p>
+          <h3>{{class.class_time}}</p>
+          <p>Starting Date</p>
+          <h3>{{class.start_date | date}}</h3>
+      </div>
+
+  </div>
+
+
+
+
+<!-- Modal -->
+<div id="registerModal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">{{course.class_day}} {{course.class_time}}</h4>
+      </div>
+      <div class="modal-body flex">
+        <div class="children" ng-repeat="child in parent.children ">
+          <h3>{{child.name}}</h3>
+            <button class="btn btn-default" ng-click="addChildToCourse(course.id, child)">Add To Class</button>
+        </div>
+      </div>
+
     </div>
+
+  </div>
+</div>
+
+
+
+
+
+
+
+
 
 
 
@@ -21,5 +88,3 @@
 
 
   </div>
-
-</div>

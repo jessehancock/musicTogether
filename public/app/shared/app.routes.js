@@ -28,7 +28,6 @@ angular.module('musApp', ['ui.router'])
 		user: function(myAccountServ, $state) {
 
 			myAccountServ.getCurrentUser().then(function(response) {
-				console.log('this was hit 2');
 				if(response.new_user === false) {
 					$state.go('myaccount');
 				}
@@ -46,7 +45,6 @@ angular.module('musApp', ['ui.router'])
  resolve: {
 	 user:function(myAccountServ, $state){
 	 myAccountServ.getCurrentUser().then(function(response){
-		 console.log('from routes', response);
 			 if(response.new_user === false){
 			 $state.go('myaccount');
 			 // return response;

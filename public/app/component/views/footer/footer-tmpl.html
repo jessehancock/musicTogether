@@ -2,18 +2,20 @@
 <div class="first-half half">
 
 
-  <div class="half-thirds">
-          <div class="group">
-              <input class="light-input" g-model="email" type="text" required>
-              <span class="highlight"></span>
-              <span class="bar light-bar"></span>
-              <label class="light-label">Join our mailing list</label>
-              <button class='testbutton' ng-click="addEmail(email)"></button>
-          </div>
+  <div class="half-half">
 
+        <div class="group">
+            <input ng-submit="addEmail(email)" class="light-input" ng-model="email" type="text" required>
+            <span class="highlight"></span>
+            <span class="bar light-bar"></span>
+            <label class="light-label">Join our mailing list</label>
+        </div>
+        <button type="button" class="btn btn-outline-* light-button footer-button" ng-click="addEmail(email)">submit</button>
 
 
   </div>
+
+
 
     <!-- <div class="half-thirds">
       <a href="mailto:music4families.debbie@gmail.com">
@@ -21,7 +23,7 @@
         <a href="https://www.facebook.com/Music-Together-at-Daybreak-1702186730019156/"><i class="fa fa-facebook fa-4x" aria-hidden="true"></i></a>
         <i class="fa fa-phone fa-4x" aria-hidden="true"></i>
     </div> -->
-    <div class="half-thirds">
+    <div class="half-half">
       <a href="https://www.musictogether.com/"><img src="./assets/images/weblink-white-MT.png" alt="" /></a>
     </div>
 

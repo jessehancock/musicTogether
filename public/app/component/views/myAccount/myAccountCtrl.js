@@ -20,14 +20,18 @@ angular.module("musApp").controller("myAccountCtrl", function($scope, myAccountS
     };
 
 
-    $scope.addChildToClass = function(course, child) {
+    $scope.addChildToCourse = function(course, child) {
+console.log(child);
+
+
         var data = {
           // TODO: HELP THIS IS WHERE THE PROBLEM IS
             course: course.toString(),
-            child: child.toString()
+            child: child.c_id.toString()
         };
-        myAccountServ.addChildToClass(data).then(function(response) {
-            // console.log(response);
+
+        //ADDING COST INTO THE EQUALTION
+        myAccountServ.addChildToCourse(data).then(function(response) {
             alert('thank you for registering');
         });
 

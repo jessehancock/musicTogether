@@ -1,23 +1,32 @@
-.registration-container{
-  max-width: 1000px;
-  letter-spacing: 1.2;
-  line-height: 1.2;
+$dark-main: #0097a7;
+$main: #00BCD4;
+$mt-main: #69d8De;
+$light-main: #b2ebf2;
+$accent-color: #ffc107;
+$light-text: #fff;
+$primary-text: #212121;
+$secondary-text: #757575;
+$divider-color: #bdbdbd;
+
+
+.myaccount-container{
+  padding: 20px;
   color: grey;
-  padding: 0 50px 60px 100px;
-    h2{
-      color: #69D8DE;
-      font-size: 1.5rem;
+    h1{
+      color: $dark-main;
     }
-    .lastname{
-      width: 200px;
-    }
-    .email{
-      width: 250px;
-    }
-    .address{
-      width: 300px;
-    }
-    input{
-      line-height: 1.5;
-    }
+    .myaccount-child{
+
+    border: 1px solid $dark-main;
+    border-radius: 8px;
+    margin: 10px 10px 10px 0;
+    padding: 0px 10px 0 10px;
+  }
+}
+
+
+.children-wrapper{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
 }

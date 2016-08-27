@@ -63,8 +63,23 @@ table {
     font-size: 1.3rem;
     color: #757575; }
 
-/* basic stylings ------------------------------------------ */
-/* starting stylings ------------------------------- */
+.light-button {
+  background-color: transparent;
+  color: #fff;
+  outline: 1px #fff solid; }
+
+.dark-button {
+  background-color: transparent;
+  color: #0097a7;
+  border-color: #0097a7; }
+
+.light-button:hover {
+  color: #ffc107; }
+
+.light-button:focus {
+  color: #fff;
+  outline: 1px #ffc107 solid; }
+
 .group {
   position: relative; }
 
@@ -72,7 +87,7 @@ input {
   font-size: 18px;
   background-color: transparent;
   padding: 10px 10px 10px 5px;
-  width: 300px;
+  width: 280px;
   border: none; }
 
 .light-input {
@@ -111,7 +126,7 @@ input:focus ~ label, input:valid ~ label {
 .bar {
   position: relative;
   display: block;
-  width: 300px; }
+  width: 280px; }
 
 .bar:before, .bar:after {
   content: '';
@@ -193,6 +208,41 @@ body {
   padding: 25px 100px 70px;
   font-size: 2rem; }
 
+.account-input {
+  margin-top: 30px; }
+
+.child-setup {
+  display: flex; }
+
+.child-birthdate {
+  padding: 0;
+  margin: 10px 0 10px 0;
+  border: 1px #bdbdbd solid; }
+
+lab {
+  margin-top: 30px;
+  font-size: 18px; }
+
+.child-birthdate-container {
+  display: flex;
+  flex-direction: column;
+  margin-right: 15px; }
+
+.each-child {
+  border-color: #0097a7;
+  border: 1px solid;
+  border-radius: 8px;
+  margin: 10px 10px 10px 0;
+  padding: 0px 10px 0 10px; }
+
+.account-setup-button {
+  width: 150px; }
+
+.children-wrapper {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap; }
+
 /* style all input elements with a required attribute */
 
 .footer-container {
@@ -211,13 +261,18 @@ body {
     display: flex;
     width: 45vw;
     height: 100%; }
-    .footer-container .half .half-thirds {
+    .footer-container .half .half-half {
       display: flex;
-      justify-content: center;
+      flex-direction: column;
+      align-items: center;
       height: 43.33%;
       width: 45vw; }
-      .footer-container .half .half-thirds img {
-        margin-top: 20px;
+      .footer-container .half .half-half .footer-button {
+        outline: none;
+        background-color: #00BCD4;
+        margin-top: 10px;
+        width: 300px; }
+      .footer-container .half .half-half img {
         align-self: center;
         height: 14vh; }
     .footer-container .half i {
@@ -238,11 +293,6 @@ body {
       text-decoration: none; }
     .footer-container copyright a:hover {
       color: #b2ebf2; }
-
-.testbutton {
-  background-color: red;
-  height: 50px;
-  width: 50px; }
 
 .image-container {
   height: 60vh;
@@ -405,28 +455,26 @@ body {
     width: 11h;
     cursor: pointer;
     z-index: 20;
-    border-radius: 999rem;
+    border-radius: 8px;
     transition: 0.5s; }
   .menu-container .login-nav-container:hover {
     box-shadow: 0 3px 7px 0 rgba(0, 0, 0, 0.26); }
 
-.registration-container {
-  max-width: 1000px;
-  letter-spacing: 1.2;
-  line-height: 1.2;
-  color: grey;
-  padding: 0 50px 60px 100px; }
-  .registration-container h2 {
-    color: #69D8DE;
-    font-size: 1.5rem; }
-  .registration-container .lastname {
-    width: 200px; }
-  .registration-container .email {
-    width: 250px; }
-  .registration-container .address {
-    width: 300px; }
-  .registration-container input {
-    line-height: 1.5; }
+.myaccount-container {
+  padding: 20px;
+  color: grey; }
+  .myaccount-container h1 {
+    color: #0097a7; }
+  .myaccount-container .myaccount-child {
+    border: 1px solid #0097a7;
+    border-radius: 8px;
+    margin: 10px 10px 10px 0;
+    padding: 0px 10px 0 10px; }
+
+.children-wrapper {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap; }
 
 * {
   font-family: 'lato';

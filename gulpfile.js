@@ -18,7 +18,7 @@ var paths = {
 // ============================================================
 gulp.task('js', function() {
   return gulp.src(paths.jsSource)
-  //.pipe(babel()) //Uncomment if using ES6
+  .pipe(babel()) //Uncomment if using ES6
   .pipe(concat('bundle.js'))
   .pipe(annotate())
   //.pipe(uglify()) //Uncomment when code is production ready

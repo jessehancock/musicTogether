@@ -1,8 +1,63 @@
+$dark-main: #0097a7;
+$main: #00BCD4;
+$mt-main: #69d8De;
+$light-main: #b2ebf2;
+$light-text: #fff;
+$accent-color: #ffc107;
+$primary-text: #212121;
+$secondary-text: #757575;
+$divider-color: #bdbdbd;
+
+
+
 .account-setup-container{
   padding: 25px 100px 70px;
   font-size: 2rem;
 }
 
+.account-input{
+  margin-top: 30px;
+}
+.child-setup{
+  display: flex;
+}
+.child-birthdate{
+  padding: 0;
+  margin: 10px 0 10px 0;
+  border: 1px $divider-color solid;
+}
+
+lab{
+  margin-top: 30px;
+  font-size: 18px;
+}
+
+.child-birthdate-container {
+
+  display:flex;
+  flex-direction: column;
+  margin-right: 15px;
+}
+
+.each-child{
+  border-color: $dark-main;
+  border: 1px solid;
+  border-radius: 8px;
+  margin: 10px 10px 10px 0;
+  padding: 0px 10px 0 10px;
+}
+
+
+
+.account-setup-button{
+  width: 150px;
+}
+
+.children-wrapper{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
 /* style all input elements with a required attribute */
 // input:required {
 // }

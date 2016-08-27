@@ -1,42 +1,54 @@
 <div class="account-setup-container">
-<h2>To register:</h2>
+    <h2>To register:</h2>
 
-<!--TODO: make this welcome the user by name  -->
-<p>You're account is almost setup! Please fill out the rest of the info.</p>
+    <!--TODO: make this welcome the user by name  -->
+    <p>You're account is almost setup! Please fill out the rest of the info.</p>
 
-<!-- GET CURRENT USER DISPLAYNAME & DISPLAY -->
-<div class="group schedule-group">
-    <input class="dark-input searchClass"  ng-model='customerObj.parent.email'  required>
-    <span class="highlight"></span>
-    <span class="bar dark-bar"></span>
-    <label>Email</label>
-</div>
-<div class="group schedule-group">
-    <input class="dark-input searchClass" ng-model='customerObj.parent.phone' required  required>
-    <span class="highlight"></span>
-    <span class="bar dark-bar"></span>
-    <label>Phone</label>
-</div>
+    <!-- GET CURRENT USER DISPLAYNAME & DISPLAY -->
+    <div class="group schedule-group account-input">
+        <input class="dark-input searchClass" ng-model='customerObj.parent.email' required>
+        <span class="highlight"></span>
+        <span class="bar dark-bar"></span>
+        <label>Email*</label>
+    </div>
+    <div class="group schedule-group account-input">
+        <input class="dark-input searchClass" ng-model='customerObj.parent.phone' required required>
+        <span class="highlight"></span>
+        <span class="bar dark-bar"></span>
+        <label>Phone*</label>
+    </div>
 
-<div ng-repeat='child in customerObj.children'>
-  <div class="group schedule-group">
-    <input class="dark-input searchClass"  name="name" ng-model='child.name' required>
-    <span class="highlight"></span>
-    <span class="bar dark-bar"></span>
-    <label>Child's Name</label>
-    <input class="child-birthdate" type="date" placeholder="years" ng-model='child.birthdate' >
-    <button id="removeChild" type="button" ng-click='removeChild($index)'>Remove Child</button>
+    <div class="children-wrapper">
+        <div ng-repeat='child in customerObj.children'>
+            <div class="">
 
 
-  </div>
-</div>
+              <div class="each-child">
+                <div class="group schedule-group account-input">
+                    <input class="dark-input searchClass" name="name" ng-model='child.name' required>
+                    <span class="highlight"></span>
+                    <span class="bar dark-bar"></span>
+                    <label>Child's Name*</label>
+                </div>
 
-<br>
-<br>
-<button ng-click='addChild()'id="addChild" type="button">Add Child</button>
+                <div class="child-birthdate-container">
+                    <lab>Child Birthdate*</lab>
+                    <input class="child-birthdate" type="date" placeholder="years" ng-model='child.birthdate'>
+                  </div>
+              </div>
 
-<br>
-<br>
-<button type="button" ng-click="addCustomers(customerObj)">Update Account</button>
+                    <button class="btn btn-outline-* dark-button account-setup-button" id="removeChild" type="button" ng-click='removeChild($index)'>Remove Child</button>
+                </div>
+
+        </div>
+    </div>
+
+
+    <br>
+    <button class="btn btn-outline-* dark-button account-setup-button" ng-click='addChild()' id="addChild" type="button">Add Child</button>
+
+    <br>
+    <br>
+    <button class="btn btn-outline-* dark-button account-setup-button" type="button" ng-click="addCustomers(customerObj)">Update Account</button>
 
 </div>

@@ -22,7 +22,7 @@ angular.module("musApp").service("myAccountServ", function($http) {
     });
   };
 
-  this.addChildToClass = function(data){
+  this.addChildToCourse = function(data){
     return $http({
       method: 'PUT',
       url: '/addToCourse',
@@ -32,7 +32,6 @@ angular.module("musApp").service("myAccountServ", function($http) {
   };
 
   this.logout = function() {
-    console.log('logout2');
     return $http({
       method: 'GET',
       url: '/logout'
