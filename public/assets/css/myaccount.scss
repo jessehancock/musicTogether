@@ -10,7 +10,7 @@ $divider-color: #bdbdbd;
 
 
 .myaccount-container{
-  padding: 20px;
+  padding: 60px 20px;
   color: grey;
     h1{
       color: $dark-main;
@@ -26,6 +26,7 @@ $divider-color: #bdbdbd;
 
 
 .children-wrapper{
+  padding: 30px 0;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;

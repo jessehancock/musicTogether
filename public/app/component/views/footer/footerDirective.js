@@ -6,8 +6,13 @@ angular.module('musApp')
     controller: function($scope, footerServ){
       $scope.addEmail = function(email) {
           footerServ.addEmail(email).then(function(response){
-            alert("thanks for joining " + response.data.email);
-            //TODO: alert when email is already entered
+
+            if (response.status === 200) {
+              swal('Success', 'Thanks for joining our email list', 'success');
+            }
+            else{
+              swal("Cancelled", "Your imaginary file is safe :)", "error");
+            }
           });
       };
     }

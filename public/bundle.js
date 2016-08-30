@@ -117,7 +117,7 @@ angular.module("musApp").controller("accountSetupCtrl", ["$scope", "accountSetup
         },
         children: [{
             name: '',
-            birthday: ''
+            birthdate: ''
         }]
     };
     // FUNCTIONS
@@ -131,6 +131,7 @@ angular.module("musApp").controller("accountSetupCtrl", ["$scope", "accountSetup
     };
 
     $scope.addCustomers = function (customerObj) {
+        // console.log('this is the place', customerObj); THIS MIGHT HELP WITH THE AGE
         accountSetupServ.addCustomers(customerObj).then(function (response) {
             $scope.parent = response;
             $state.go('myaccount');
@@ -159,8 +160,12 @@ angular.module('musApp').directive('footerDirective', function () {
     controller: ["$scope", "footerServ", function ($scope, footerServ) {
       $scope.addEmail = function (email) {
         footerServ.addEmail(email).then(function (response) {
-          alert("thanks for joining " + response.data.email);
-          //TODO: alert when email is already entered
+
+          if (response.status === 200) {
+            swal('Success', 'Thanks for joining our email list', 'success');
+          } else {
+            swal("Cancelled", "Your imaginary file is safe :)", "error");
+          }
         });
       };
     }]
@@ -210,30 +215,43 @@ angular.module('musApp').directive('navDirective', function () {
             $(".menu-container").css({ "position": "inherit" });
           }
         });
+
+        $(".myaccount-slidding-menu	").mouseenter(function () {
+          $(".account-nav-container").slideDown('fast', 'linear');
+          $('.login-nav-container').css('height', '25vh');
+          $('.login-nav-container').css('margin-top', '14vh');
+        });
+
+        $(".myaccount-slidding-menu	").mouseleave(function () {
+          $(".account-nav-container").slideToggle();
+          $('.login-nav-container').css('height', '11vh');
+          $('.login-nav-container').css('margin-top', '0');
+        });
+
+        $('[data-toggle="tooltip"]').tooltip();
       });
     }
   };
 });
 angular.module("musApp").filter('ageFilter', function () {
-      function calculateAge(birthday) {
-            // birthday is a date
-            var try1 = moment().diff(birthday);
-            var try2 = moment(birthday, "YYYY").fromNow();
-            console.log(try1);
-            console.log(try2);
-            var birthdayDate = new Date(birthday);
-            var ageDifMs = new Date() - birthdayDate;
-            var ageDate = new Date(ageDifMs); // miliseconds from epoch
-            return Math.abs(ageDate.getUTCFullYear() - 1970);
-      }
 
-      return function (birthdate) {
+  //TODO Make math work right for months;
+  function calculateAge(birthday) {
+    // birthday is a date
+    // var try1 = moment().diff(birthday);
+    // var try2 = moment(birthday, "YYYY").fromNow();
+    var birthdayDate = new Date(birthday);
+    var ageDifMs = new Date() - birthdayDate;
+    var ageDate = new Date(ageDifMs); // miliseconds from epoch
+    return Math.abs(ageDate.getUTCFullYear() - 1970);
+  }
 
-            var age = calculateAge(birthdate);
-            if (age === 0) {
-                  return moment(birthdate, "YYYY").fromNow().split(' ').shift() + " months old";
-            } else if (age == 1) return age + ' year old';else return age + ' years old';
-      };
+  return function (birthdate) {
+    var age = calculateAge(birthdate);
+    if (age === 0) {
+      return moment(birthdate, "YYYY").fromNow().split(' ').shift() + " months old";
+    } else if (age == 1) return age + ' year old';else return age + ' years old';
+  };
 });
 angular.module("musApp").controller("myAccountCtrl", ["$scope", "myAccountServ", "$rootScope", "$state", function ($scope, myAccountServ, $rootScope, $state) {
 
@@ -254,18 +272,59 @@ angular.module("musApp").controller("myAccountCtrl", ["$scope", "myAccountServ",
         $scope.course = course;
     };
 
-    $scope.addChildToCourse = function (course, child) {
-        console.log(child);
+    $scope.addChildToCourse = function (course, child, parent) {
+        var amount_due = 0;
+        var childAge = new Date(child.birthdate);
+        var age = moment(childAge).fromNow().split(' ');
+        if (age[1] === 'year' || age[1] === 'years') {
+            age[0] = 12;
+        } else if (age[0] > 9) {
+            age[0] = 9;
+        } else age[0] = 8;
+        child.month_age = age[0];
+        // console.log(child);
 
+        //THIS FUNCTION WILL CALCULATE COST
+        cost(parent.children, parent.new_user); //calling cost function
+        function cost(childArr, returning) {
+            var regFee = 15;
+            var totalCost = 145;
+
+            console.log(childArr);
+            // childArr = childArr.filter(function(element, index, array) {
+            //     if (element.schedule_id && element.month_age) return element;
+            // });
+            // console.log(childArr);
+
+            childArr = childArr.sort(function (a, b) {
+                return b.month_age - a.month_age;
+            });
+            console.log(childArr);
+
+            for (var i = 1; i < childArr.length; i++) {
+                if (childArr[i].schedule_id) console.log(childArr[i].month_age);
+                if (childArr[i].month_age > 8) totalCost += 70;
+            }
+
+            if (returning) amount_due = totalCost;else amount_due = totalCost + regFee;
+        }
+
+        //PASSING THIS DATA TO THE BACK END
         var data = {
-            // TODO: HELP THIS IS WHERE THE PROBLEM IS
-            course: course.toString(),
-            child: child.c_id.toString()
+            course: course,
+            child: child.c_id,
+            month_age: child.month_age,
+            amount_due: amount_due,
+            parent_id: child.parent_id
         };
+
+        // console.log(data);
 
         //ADDING COST INTO THE EQUALTION
         myAccountServ.addChildToCourse(data).then(function (response) {
-            alert('thank you for registering');
+
+            $rootScope.amount_due = response.amount_due;
+            swal('Awesome!', 'your total is now ' + response.amount_due, 'success');
         });
     };
 
@@ -305,7 +364,9 @@ angular.module("musApp").service("myAccountServ", ["$http", function ($http) {
       method: 'PUT',
       url: '/addToCourse',
       data: data
-    }).then(function (response) {});
+    }).then(function (response) {
+      return response.data;
+    });
   };
 
   this.logout = function () {
@@ -317,13 +378,6 @@ angular.module("musApp").service("myAccountServ", ["$http", function ($http) {
     });
   };
 }]);
-angular.module('musApp').directive('accountNavDirective', function () {
-    return {
-        templateUrl: './app/component/views/myAccount/account-nav/account-nav.html',
-        restrict: 'EA',
-        controller: 'myAccountCtrl'
-    };
-});
 // // INITILIZE CONTROLLER
 // // ============================================================
 // angular.module("musApp").controller("registerCtrl", function($scope, registerServ) {

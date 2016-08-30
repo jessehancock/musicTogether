@@ -1,55 +1,48 @@
-$dark-main: #0097a7;
-$main: #00BCD4;
-$mt-main: #69d8De;
-$light-main: #b2ebf2;
-$accent-color: #ffc107;
-$light-text: #fff;
-$primary-text: #212121;
-$secondary-text: #757575;
-$divider-color: #bdbdbd;
+	$dark-main: #0097a7;
+	$main: #00BCD4;
+	$mt-main: #69d8De;
+	$light-main: #b2ebf2;
+	$accent-color: #ffc107;
+	$light-text: #fff;
+	$primary-text: #212121;
+	$secondary-text: #757575;
+	$divider-color: #bdbdbd;
 
-// 1 Box
-// margin, padding, display, etc.
-// 2 Border & Background
-// border, border-radius, background-color, etc.
-// 3 Text
-// color, font-size, text-transform, etc.
-// 4 Other stuff
-// animations, transforms, etc.
-*{
-	font-family: 'lato';
-	line-height: 1.2;
-	letter-spacing: 1.2;
-	box-sizing:border-box;
-	h1 {font-size: 3.5rem;};
-	h2 {font-size: 2.7rem;};
-	h3 {font-size: 2rem;};
-	h4 {font-size: 1.7rem;};
-	h5 {font-size: 1.5rem;};
-	p {font-size: 1.3rem;
-		 color:$secondary-text;};
-}
-//
-.fix{
-	height: 200px;
+	// 1 Box
+	// margin, padding, display, etc.
+	// 2 Border & Background
+	// border, border-radius, background-color, etc.
+	// 3 Text
+	// color, font-size, text-transform, etc.
+	// 4 Other stuff
+	// animations, transforms, etc.
 
-}
+	.fix{
+		height: 200px;
 
-.schedule-container{
-  display: flex;
-	align-content: flex-start;
-  flex-wrap: wrap;
-	justify-content: space-around;
-	.schedule-group{
-			width: 100%;
 	}
-}
 
-.signup{
-	cursor: pointer;
-	background: $main;
-  width: 200px;
-	height: 150px;
-  padding: 10px;
-  margin: 10px;
-}
+	.schedule-container{
+		padding-bottom: 60px;
+	  display: flex;
+		align-content: center;
+	  flex-wrap: wrap;
+		justify-content: space-around;
+		.schedule-group{
+				width: 100%;
+		}
+		h2{
+			padding: 50px 0 20px;
+			color: $dark-main;
+		}
+	}
+
+	.signup{
+		border-radius: 12px;
+		cursor: pointer;
+		background: $main;
+	  width: 200px;
+		height: 150px;
+	  padding: 10px;
+	  margin: 10px;
+	}

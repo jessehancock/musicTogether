@@ -1,0 +1,36 @@
+$dark-main: #0097a7;
+$main: #00BCD4;
+$mt-main: #69d8De;
+$light-main: #b2ebf2;
+$accent-color: #ffc107;
+$light-text: #fff;
+$primary-text: #212121;
+$secondary-text: #757575;
+$divider-color: #bdbdbd;
+
+
+.contact{
+  position: absolute;
+  top: 60px;
+  right: 100px;
+  display:flex;
+  flex-direction: column;
+  i{
+    padding: 5px;
+    color: $mt-main;
+  }
+  i:hover{
+    color:$light-text;
+  }
+}
+
+.tooltip > .tooltip-inner {
+      width:200px;
+      background-color: transparent;
+      color: #FFFFFF;
+      padding: 5px;
+  }
+
+  .tooltip.bottom > .tooltip-arrow {
+        border-bottom: 5px solid $mt-main;
+    }

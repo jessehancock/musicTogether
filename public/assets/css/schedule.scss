@@ -1,54 +1,115 @@
+$dark-main: #0097a7;
+$main: #00BCD4;
+$mt-main: #69d8De;
+$light-main: #b2ebf2;
+$accent-color: #ffc107;
+$light-text: #fff;
+$primary-text: #212121;
+$secondary-text: #757575;
+$divider-color: #bdbdbd;
+
+
+
+
 .schedule {
-    padding: 60px 0;
+    padding: 30px 0;
     display: flex;
     justify-content: center;
+    align-items: center;
     flex-direction: column;
-    color: grey;
     letter-spacing: 1.2;
     line-height: 1.2;
+    border-bottom: $divider-color 1px solid;
     h2 {
-
-        padding: 15px 0 5px;
+        color: $dark-main;
+        padding: 15px 0 30px;
         align-self: center;
     }
-    p {
-        align-self: center;
-    }
-    .schedule-titles-container {
-        display: flex;
-        justify-content: center;
-        padding: 0 60px 0 0;
-        h3 {
-            font-size: 1.5rem;
-        }
-        .schedule-titles {
-          padding: 0 25px;
-        }
-    }
-    .about-registration-container {
-        display: flex;
-        justify-content: center;
-        padding: 60px 100px 0 100px;
-        .about-registration {
-          padding: 0 10vw 0 0;
-            h3 {
-                font-size: 1.5rem;
-            }
-            p {
-                max-width: 400px;
-            }
-        }
-        .tuition {
-            max-width: 400px;
-            h3 {
-                font-size: 1.3rem;
-            }
-            salmo {
-                color: #FF7878;
-            }
-        }
+    #schedule-info{
+      cursor: default;
+      max-width: 90vw;
+      align-self: center;
+      cursor: auto;
     }
 }
+
+
+
+
+.circle-images{
+  border-radius:999rem;
+  height: 15vw;
+  width: 15vw;
+}
+
+
+
+
+    /***********ABOUT PAGE***********/
+
+    .about-container{
+    	display: flex;
+    	align-items: center;
+    	flex-direction: column;
+    	justify-content: center;
+    	min-width: 300px;
+    	padding: 0 40px;
+    	text-align: center;
+    }
+
+    .about-intro{
+      border-top: $divider-color 1px solid;
+      padding: 14vh 10vw 5vh 10vw;
+      margin-top: 8vh;
+    	text-align: left;
+    	font-size: 4vh;
+    }
+
+    .rules-container{
+    	display: flex;
+    	flex-direction: row;
+    	flex-wrap: wrap;
+    	justify-content: space-around;
+    	text-align: center;
+      padding: 0px 5vw;
+    }
+
+
+    .rules{
+    	width: 240px;
+    	padding: 10px 25px;
+    }
+
+    .rules h4{
+    	text-align: left;
+    }
+
+
+    .rules p{
+    	text-align: left;
+    }
+
+    .length{
+    	width: 100%;
+    	max-width: 1000px;
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

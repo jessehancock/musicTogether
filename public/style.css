@@ -183,27 +183,6 @@ body {
       letter-spacing: 1.2;
       line-height: 1.2; }
 
-.account-nav-wrapper {
-  margin: 20px 10vw;
-  display: flex;
-  background-color: #fff;
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23); }
-
-.account-nav-container {
-  background-color: #00BCD4;
-  display: flex;
-  align-items: left;
-  flex-direction: column;
-  height: 100%;
-  min-width: 10vw; }
-  .account-nav-container .account-nav {
-    color: #fff;
-    transition: .5s;
-    padding: 5px;
-    text-decoration: none; }
-  .account-nav-container .account-nav:hover {
-    background-color: #0097a7; }
-
 .account-setup-container {
   padding: 25px 100px 70px;
   font-size: 2rem; }
@@ -244,6 +223,27 @@ lab {
   flex-wrap: wrap; }
 
 /* style all input elements with a required attribute */
+
+.contact {
+  position: absolute;
+  top: 60px;
+  right: 100px;
+  display: flex;
+  flex-direction: column; }
+  .contact i {
+    padding: 5px;
+    color: #69d8De; }
+  .contact i:hover {
+    color: #fff; }
+
+.tooltip > .tooltip-inner {
+  width: 200px;
+  background-color: transparent;
+  color: #FFFFFF;
+  padding: 5px; }
+
+.tooltip.bottom > .tooltip-arrow {
+  border-bottom: 5px solid #69d8De; }
 
 .footer-container {
   display: flex;
@@ -438,30 +438,37 @@ lab {
     font-size: 1.8rem;
     color: #ffffff;
     text-decoration: none;
-    transition: 1s;
-    align-self: center; }
+    transition: 1s; }
   .menu-container .routes:hover {
-    font-size: 1.9rem;
+    font-size: 2rem;
     text-decoration: none;
     cursor: pointer;
     transition: 0.2s; }
   .menu-container .login-nav-container {
-    display: flex;
-    align-content: center;
-    justify-content: center;
     background-color: #ffc107;
     box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26);
     height: 11vh;
-    width: 11h;
     cursor: pointer;
     z-index: 20;
     border-radius: 8px;
-    transition: 0.5s; }
+    transition: 0.5s;
+    padding-top: 26px; }
   .menu-container .login-nav-container:hover {
     box-shadow: 0 3px 7px 0 rgba(0, 0, 0, 0.26); }
 
+.account-nav-container {
+  padding-top: 10px;
+  display: none; }
+
+.account-nav {
+  color: #ffffff;
+  transition: .5s;
+  text-decoration: none; }
+  .account-nav h5 {
+    padding: 0 10px 10px; }
+
 .myaccount-container {
-  padding: 20px;
+  padding: 60px 20px;
   color: grey; }
   .myaccount-container h1 {
     color: #0097a7; }
@@ -472,41 +479,28 @@ lab {
     padding: 0px 10px 0 10px; }
 
 .children-wrapper {
+  padding: 30px 0;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap; }
-
-* {
-  font-family: 'lato';
-  line-height: 1.2;
-  letter-spacing: 1.2;
-  box-sizing: border-box; }
-  * h1 {
-    font-size: 3.5rem; }
-  * h2 {
-    font-size: 2.7rem; }
-  * h3 {
-    font-size: 2rem; }
-  * h4 {
-    font-size: 1.7rem; }
-  * h5 {
-    font-size: 1.5rem; }
-  * p {
-    font-size: 1.3rem;
-    color: #757575; }
 
 .fix {
   height: 200px; }
 
 .schedule-container {
+  padding-bottom: 60px;
   display: flex;
-  align-content: flex-start;
+  align-content: center;
   flex-wrap: wrap;
   justify-content: space-around; }
   .schedule-container .schedule-group {
     width: 100%; }
+  .schedule-container h2 {
+    padding: 50px 0 20px;
+    color: #0097a7; }
 
 .signup {
+  border-radius: 12px;
   cursor: pointer;
   background: #00BCD4;
   width: 200px;
@@ -515,42 +509,67 @@ lab {
   margin: 10px; }
 
 .schedule {
-  padding: 60px 0;
+  padding: 30px 0;
   display: flex;
   justify-content: center;
+  align-items: center;
   flex-direction: column;
-  color: grey;
   letter-spacing: 1.2;
-  line-height: 1.2; }
+  line-height: 1.2;
+  border-bottom: #bdbdbd 1px solid; }
   .schedule h2 {
-    padding: 15px 0 5px;
+    color: #0097a7;
+    padding: 15px 0 30px;
     align-self: center; }
-  .schedule p {
-    align-self: center; }
-  .schedule .schedule-titles-container {
-    display: flex;
-    justify-content: center;
-    padding: 0 60px 0 0; }
-    .schedule .schedule-titles-container h3 {
-      font-size: 1.5rem; }
-    .schedule .schedule-titles-container .schedule-titles {
-      padding: 0 25px; }
-  .schedule .about-registration-container {
-    display: flex;
-    justify-content: center;
-    padding: 60px 100px 0 100px; }
-    .schedule .about-registration-container .about-registration {
-      padding: 0 10vw 0 0; }
-      .schedule .about-registration-container .about-registration h3 {
-        font-size: 1.5rem; }
-      .schedule .about-registration-container .about-registration p {
-        max-width: 400px; }
-    .schedule .about-registration-container .tuition {
-      max-width: 400px; }
-      .schedule .about-registration-container .tuition h3 {
-        font-size: 1.3rem; }
-      .schedule .about-registration-container .tuition salmo {
-        color: #FF7878; }
+  .schedule #schedule-info {
+    cursor: default;
+    max-width: 90vw;
+    align-self: center;
+    cursor: auto; }
+
+.circle-images {
+  border-radius: 999rem;
+  height: 15vw;
+  width: 15vw; }
+
+/***********ABOUT PAGE***********/
+.about-container {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  min-width: 300px;
+  padding: 0 40px;
+  text-align: center; }
+
+.about-intro {
+  border-top: #bdbdbd 1px solid;
+  padding: 14vh 10vw 5vh 10vw;
+  margin-top: 8vh;
+  text-align: left;
+  font-size: 4vh; }
+
+.rules-container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  text-align: center;
+  padding: 0px 5vw; }
+
+.rules {
+  width: 240px;
+  padding: 10px 25px; }
+
+.rules h4 {
+  text-align: left; }
+
+.rules p {
+  text-align: left; }
+
+.length {
+  width: 100%;
+  max-width: 1000px; }
 
 @media only screen and (max-width: 900px) {
   .schedule-titles {

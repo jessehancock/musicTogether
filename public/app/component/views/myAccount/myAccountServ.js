@@ -28,6 +28,7 @@ angular.module("musApp").service("myAccountServ", function($http) {
       url: '/addToCourse',
       data: data
     }).then(function(response){
+      return response.data;
     });
   };
 

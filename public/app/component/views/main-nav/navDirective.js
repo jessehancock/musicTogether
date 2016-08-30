@@ -18,6 +18,22 @@ angular.module('musApp')
                     }
 
                   });
+
+                  $(".myaccount-slidding-menu	").mouseenter(function(){
+                     $(".account-nav-container").slideDown('fast', 'linear');
+                     $('.login-nav-container').css('height', '25vh');
+                     $('.login-nav-container').css('margin-top', '14vh');
+                  });
+
+                  $(".myaccount-slidding-menu	").mouseleave(function(){
+                    $(".account-nav-container").slideToggle();
+                     $('.login-nav-container').css('height', '11vh');
+                     $('.login-nav-container').css('margin-top', '0');
+                  });
+
+
+                  $('[data-toggle="tooltip"]').tooltip();
+
                 });
 
             }

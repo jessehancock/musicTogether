@@ -16,61 +16,17 @@
     {{child.start_date | date : "fullDate"}}
     {{child.class_time}}
   </div>
+
+
 </div>
 
 
 
 
-
-
-
-  <!-- <div class="group schedule-group">
-      <input class="dark-input searchClass" type="text" name="name" ng-model="search.$" ng-model="email" type="text" required>
-      <span class="highlight"></span>
-      <span class="bar dark-bar"></span>
-      <label >Try Searching</label>
-  </div> -->
-
-  <h2>Register</h2>
-  <!--TODO: make it so you can search by date   -->
-  <div data-toggle="modal" data-target="#registerModal" class="moda-content schedule-container">
-
-
-      <div class="signup" ng-click="addClassToScope(class)" ng-repeat="class in schedule | filter:search | orderBy:'id' ">
-          <p Day</p>
-          <h3>{{class.class_day}}</h3>
-          <p>Time</p>
-          <h3>{{class.class_time}}</p>
-          <p>Starting Date</p>
-          <h3>{{class.start_date | date}}</h3>
-      </div>
-
-  </div>
-
-
-
-
-<!-- Modal -->
-<div id="registerModal" class="modal fade" role="dialog">
-  <div class="modal-dialog">
-
-    <!-- Modal content-->
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal">&times;</button>
-        <h4 class="modal-title">{{course.class_day}} {{course.class_time}}</h4>
-      </div>
-      <div class="modal-body flex">
-        <div class="children" ng-repeat="child in parent.children ">
-          <h3>{{child.name}}</h3>
-            <button class="btn btn-default" ng-click="addChildToCourse(course.id, child)">Add To Class</button>
-        </div>
-      </div>
-
-    </div>
-
-  </div>
+<div class="payment-container">
+  <p>Current balance is {{amount_due}}</p>
 </div>
+
 
 
 

@@ -1,4 +1,12 @@
-<div class="menu-wrapper">
+
+<div class="contact">
+		<a href="mailto:music4families.debbie@gmail.com"><i class="fa fa-envelope fa-2x" aria-hidden="true"></i></a>
+		<a href="https://www.facebook.com/Music-Together-at-Daybreak-1702186730019156/"><i class="fa fa-facebook fa-2x"></i></a>
+		<a href="#" data-toggle="tooltip" data-placement="bottom" title="801-598-9199"><i class="fa fa-phone fa-2x"></i></a>
+</div>
+
+
+<div class="menu-wrapper" id="test">
 	<div class="logo-containter">
 		<img src="./assets/images/MTatDaybreakTEAL.png" alt="Music Together logo">
 
@@ -6,105 +14,146 @@
 	<div class="menu-container" id="blah" class="close" data-dismiss="modal">
 		<a class="routes" ui-sref='home'>Home</a>
 		<a class="routes" ui-sref='about'>About</a>
-		<a class="routes" ui-sref='contact'>Contact</a>
+		<!-- <a class="routes" ui-sref='contact'>Contact</a> -->
 		<a class="routes" ui-sref='schedule'>Schedule</a>
 		<div class='login-nav-container'>
 			<a class="routes login-nav" data-toggle="modal" data-target="#myModal" ng-click="login()" ng-show="!currentUserSignedIn">Log In</a>
 		</div>
-<div class='login-nav-container'>
-		<a class="routes" ui-sref='myaccount' ng-show="currentUserSignedIn">My Account</a>
+
+
+
+
+
+
+
+
+
+
+
+		<div class='login-nav-container myaccount-slidding-menu	' ng-show="currentUserSignedIn">
+			<a class="routes" id="sliding" ui-sref='myaccount'>My Account</a>
+			<div class="account-nav-container">
+				<a class="account-nav" ui-sref='mykids'><h5>My Kids</h5></a>
+				<a class="account-nav" ui-sref='register'><h5>Register</h5></a>
+				<a class="account-nav" ui-sref='editaccount'><h5>Edit Account</h5></a>
+				<a ng-controller='myAccountCtrl' class="account-nav" ng-click="logout()"><h5>Log Out</h5></a>
+			</div>
+
+		</div>
+	</div>
 </div>
-</div>
-</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 <!--START OF MODAL HAVING TO DO STYLING HERE SO BECAUSE OF FIXED PARENT OF MODAL-->
 <style>
-h4 {
-	font-size: 2rem;
-}
-/*input {
+	h4 {
+		font-size: 2rem;
+	}
+	/*input {
 	margin-bottom: 10px;
 	font-size: 2rem;
 	height: 4rem;
 	width: 100%;
 }*/
-.l-login-button {
-	background-color: #FF7878;
-	font-size: 1.5rem;
-	color: white;
-	height: 4rem;
-	border: none;
-	cursor: pointer;
-	width: 100%;
-}
-.fb-login-button {
-	background-color: #3B5998;
-	font-size: 1.5rem;
-	color: white;
-	height: 4rem;
-	border: none;
-	cursor: pointer;
-	width: 100%;
-}
-.g-login-button {
-	background-color: #EA4335;
-	font-size: 1.5rem;
-	color: white;
-	height: 4rem;
-	border: none;
-	cursor: pointer;
-	width: 100%;
-}
-.modal-body a {
-	padding: 0;
-}
-.modal-body p {
-	padding-top: 10px;
-	font-size: 1.3rem;
-}
-.modal-body .btn {
-	padding: 0;
-	font-size: inherit;
-	vertical-align: inherit;
-}
+
+	.l-login-button {
+		background-color: #FF7878;
+		font-size: 1.5rem;
+		color: white;
+		height: 4rem;
+		border: none;
+		cursor: pointer;
+		width: 100%;
+	}
+
+	.fb-login-button {
+		background-color: #3B5998;
+		font-size: 1.5rem;
+		color: white;
+		height: 4rem;
+		border: none;
+		cursor: pointer;
+		width: 100%;
+	}
+
+	.g-login-button {
+		background-color: #EA4335;
+		font-size: 1.5rem;
+		color: white;
+		height: 4rem;
+		border: none;
+		cursor: pointer;
+		width: 100%;
+	}
+
+	.modal-body a {
+		padding: 0;
+	}
+
+	.modal-body p {
+		padding-top: 10px;
+		font-size: 1.3rem;
+	}
+
+	.modal-body .btn {
+		padding: 0;
+		font-size: inherit;
+		vertical-align: inherit;
+	}
 </style>
 <!-- HAVE INLINE STYLING BECAUSE MODAL WONT DISPLAY WITH A FIXED PARENT-->
-		<div id="myModal" class="modal fade" role="dialog">
-			<div class="modal-dialog">
+<div id="myModal" class="modal fade" role="dialog">
+	<div class="modal-dialog">
 
-				<!-- Modal content-->
-				<div class="modal-content">
-					<section class="login-modal" ng-hide='loginForm'>
-						<div class="modal-header">
-							<button type="button" class="close" data-dismiss="modal">&times;</button>
-							<h4 class="modal-title">Log In</h4>
-						</div>
-						<div class="modal-body flex">
+		<!-- Modal content-->
+		<div class="modal-content">
+			<section class="login-modal" ng-hide='loginForm'>
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
+					<h4 class="modal-title">Log In</h4>
+				</div>
+				<div class="modal-body flex">
 
 
-							<!-- LOCAL AUTH -->
-							<!-- <input class='email'type="text" placeholder="email" ng-model='customer.parent.email' >
+					<!-- LOCAL AUTH -->
+					<!-- <input class='email'type="text" placeholder="email" ng-model='customer.parent.email' >
 								<br>
 								<br>
 								<input type="password" class='password'type="text" placeholder="password" ng-model='customer.parent.password' >
 								<button class='l-login-button' type="submit">Login</button>
 								<br>
 								<br> -->
-							<a href="/auth/facebook"><button class='fb-login-button' >facebook</button></a>
-							<br>
-							<br>
-							<!-- <button ng-click="loginG()" class='g-login-button' type="submit">login w/ google</button> -->
+					<a href="/auth/facebook">
+						<button class='fb-login-button'>facebook</button>
+					</a>
+					<br>
+					<br>
+					<!-- <button ng-click="loginG()" class='g-login-button' type="submit">login w/ google</button> -->
 
-							<!--LOCAL AUTH-->
-							<!-- <p>Don't have an account? <button id="no-account" type="button" class="btn btn-link"
+					<!--LOCAL AUTH-->
+					<!-- <p>Don't have an account? <button id="no-account" type="button" class="btn btn-link"
 									ng-click="loginForm = !loginForm">Register</button></p> -->
-						</div>
-					</section>
+				</div>
+			</section>
 
 
-					<!-- LOCAL AUTH -->
-					<!-- <section class="login-modal" ng-show="loginForm">
+			<!-- LOCAL AUTH -->
+			<!-- <section class="login-modal" ng-show="loginForm">
 							<div class="modal-header">
 								<button type="button" class="close" data-dismiss="modal">&times;</button>
 								<h4 class="modal-title">Create Account</h4>
@@ -125,9 +174,9 @@ h4 {
 						</section> -->
 
 
-				</div>
-			</div>
 		</div>
+	</div>
+</div>
 
 
 
@@ -136,4 +185,4 @@ h4 {
 
 
 
-		<!--add feature if they are logged in that it changes to my account-->
+<!--add feature if they are logged in that it changes to my account-->

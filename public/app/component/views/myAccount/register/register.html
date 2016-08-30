@@ -1,11 +1,5 @@
-<div class="account-nav-wrapper">
-
-
-<account-nav-directive></account-nav-directive>
-
-
 <div class='schedule-container'>
-
+<h2>To register for a class click on one of the classes below.</h2>
   <!-- <div class="group schedule-group">
       <input class="dark-input searchClass" type="text" name="name" ng-model="search.$" ng-model="email" type="text" required>
       <span class="highlight"></span>
@@ -29,8 +23,6 @@
 
 </div>
 
-</div>
-
 <!-- Modal -->
 <div id="registerModal" class="modal fade" role="dialog">
   <div class="modal-dialog">
@@ -44,7 +36,7 @@
       <div class="modal-body flex">
         <div class="children" ng-repeat="child in parent.children ">
           <h3>{{child.name}}</h3>
-            <button class="btn btn-default" ng-click="addChildToCourse(course.id, child.c_id)">Add To Class</button>
+            <button class="btn btn-default" ng-click="addChildToCourse(course.id, child, parent)">Add To Class</button>
         </div>
       </div>
 
