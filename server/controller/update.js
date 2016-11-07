@@ -9,7 +9,6 @@ module.exports = {
     db.update_child_schedule(req.body.course, req.body.child, req.body.month_age, function(err, response){
       if(err) res.status(500).send(err);
       else db.parent.update({id: req.body.parent_id, amount_due: req.body.amount_due}, function(error, resp){
-        console.log(resp);
         if(error) res.status(500).send(error);
         else res.status(200).send(resp);
       });

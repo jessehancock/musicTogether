@@ -131,7 +131,6 @@ angular.module("musApp").controller("accountSetupCtrl", ["$scope", "accountSetup
     };
 
     $scope.addCustomers = function (customerObj) {
-        // console.log('this is the place', customerObj); THIS MIGHT HELP WITH THE AGE
         accountSetupServ.addCustomers(customerObj).then(function (response) {
             $scope.parent = response;
             $state.go('myaccount');
@@ -174,7 +173,6 @@ angular.module('musApp').directive('footerDirective', function () {
 angular.module("musApp").service("footerServ", ["$http", function ($http) {
 
   this.addEmail = function (email) {
-    console.log('footerServ', email);
     return $http({
       method: 'POST',
       url: '/mailinglist',
@@ -238,11 +236,9 @@ angular.module("musApp").filter('ageFilter', function () {
   //TODO Make math work right for months;
   function calculateAge(birthday) {
     // birthday is a date
-    // var try1 = moment().diff(birthday);
-    // var try2 = moment(birthday, "YYYY").fromNow();
     var birthdayDate = new Date(birthday);
     var ageDifMs = new Date() - birthdayDate;
-    var ageDate = new Date(ageDifMs); // miliseconds from epoch
+    var ageDate = new Date(ageDifMs); // milliseconds from epoch
     return Math.abs(ageDate.getUTCFullYear() - 1970);
   }
 
@@ -278,11 +274,10 @@ angular.module("musApp").controller("myAccountCtrl", ["$scope", "myAccountServ",
         var age = moment(childAge).fromNow().split(' ');
         if (age[1] === 'year' || age[1] === 'years') {
             age[0] = 12;
-        } else if (age[0] > 9) {
+        } else if (age[0] >= 9) {
             age[0] = 9;
         } else age[0] = 8;
         child.month_age = age[0];
-        // console.log(child);
 
         //THIS FUNCTION WILL CALCULATE COST
         cost(parent.children, parent.new_user); //calling cost function
@@ -290,20 +285,12 @@ angular.module("musApp").controller("myAccountCtrl", ["$scope", "myAccountServ",
             var regFee = 15;
             var totalCost = 145;
 
-            console.log(childArr);
-            // childArr = childArr.filter(function(element, index, array) {
-            //     if (element.schedule_id && element.month_age) return element;
-            // });
-            // console.log(childArr);
-
             childArr = childArr.sort(function (a, b) {
                 return b.month_age - a.month_age;
             });
-            console.log(childArr);
 
             for (var i = 1; i < childArr.length; i++) {
-                if (childArr[i].schedule_id) console.log(childArr[i].month_age);
-                if (childArr[i].month_age > 8) totalCost += 70;
+                if (childArr[i].schedule_id) if (childArr[i].month_age > 8) totalCost += 70;
             }
 
             if (returning) amount_due = totalCost;else amount_due = totalCost + regFee;
@@ -317,8 +304,6 @@ angular.module("musApp").controller("myAccountCtrl", ["$scope", "myAccountServ",
             amount_due: amount_due,
             parent_id: child.parent_id
         };
-
-        // console.log(data);
 
         //ADDING COST INTO THE EQUALTION
         myAccountServ.addChildToCourse(data).then(function (response) {
@@ -378,16 +363,13 @@ angular.module("musApp").service("myAccountServ", ["$http", function ($http) {
     });
   };
 }]);
-// // INITILIZE CONTROLLER
-// // ============================================================
-// angular.module("musApp").controller("registerCtrl", function($scope, registerServ) {
-//   // VARIABLES
-//   // ============================================================
-// //USE THIS CONTROLLER IF YOU NEED TO DO ANYTHING IN TH REGISTER.html
-// //YOU WILL HAVE TO DO A NG-CONTROLLER ON WHATEVER YOU USE.
-// //DIV NG-CONTROLLER registerCtrl EXAMPLE
-//
-// });
+angular.module('musApp').directive('editaccountDirective', function () {
+    return {
+        templateUrl: './app/component/views/myAccount/editaccount/editaccount.html',
+        restrict: 'EA',
+        controller: 'myAccountCtrl'
+    };
+});
 angular.module('musApp').directive('registerDirective', function () {
     return {
         templateUrl: './app/component/views/myAccount/register/register.html',
@@ -395,13 +377,3 @@ angular.module('musApp').directive('registerDirective', function () {
         controller: 'myAccountCtrl'
     };
 });
-// // INITILIZE SERVICE
-// // ============================================================
-// angular.module("musApp").service("registerServ", function($http) {
-//   // CRUD FUNCTIONS
-//   // ============================================================
-//
-//   // OTHER FUNCTIONS
-//   // ============================================================
-//
-// });

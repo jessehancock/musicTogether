@@ -245,6 +245,10 @@ lab {
 .tooltip.bottom > .tooltip-arrow {
   border-bottom: 5px solid #69d8De; }
 
+.addChildAdd {
+  margin: 0 auto;
+  width: 10px; }
+
 .footer-container {
   display: flex;
   align-items: center;

@@ -16,7 +16,7 @@ angular.module("musApp").service("myAccountServ", function($http) {
   this.getClassSchedule = function() {
     return $http({
       method: 'GET',
-      url: '/classSchedule'
+      url: '/classSchedule', 
     }).then(function(response) {
       return response.data;
     });

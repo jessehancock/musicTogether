@@ -2,11 +2,9 @@ angular.module("musApp").filter('ageFilter', function() {
 
   //TODO Make math work right for months;
      function calculateAge(birthday) { // birthday is a date
-        // var try1 = moment().diff(birthday);
-        // var try2 = moment(birthday, "YYYY").fromNow();
         var birthdayDate = new Date(birthday);
          var ageDifMs = new Date() - birthdayDate;
-         var ageDate = new Date(ageDifMs); // miliseconds from epoch
+         var ageDate = new Date(ageDifMs); // milliseconds from epoch
          return Math.abs(ageDate.getUTCFullYear() - 1970);
      }
 

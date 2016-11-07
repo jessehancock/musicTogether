@@ -26,7 +26,6 @@ angular.module("musApp").controller("accountSetupCtrl", function($scope, account
 
 
     $scope.addCustomers = function(customerObj){
-      // console.log('this is the place', customerObj); THIS MIGHT HELP WITH THE AGE
     	accountSetupServ.addCustomers(customerObj).then(function(response){
         $scope.parent = response;
         $state.go('myaccount');
