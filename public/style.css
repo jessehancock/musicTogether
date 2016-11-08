@@ -245,9 +245,8 @@ lab {
 .tooltip.bottom > .tooltip-arrow {
   border-bottom: 5px solid #69d8De; }
 
-.addChildAdd {
-  margin: 0 auto;
-  width: 10px; }
+.edit-child-buttons {
+  cursor: pointer; }
 
 .footer-container {
   display: flex;

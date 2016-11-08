@@ -21,8 +21,6 @@ angular.module("musApp").controller("myAccountCtrl", function($scope, myAccountS
 
 
 
-
-
 $scope.addChildToCourse = function(course, child, parent) {
     var amount_due = 0;
     var childAge = new Date(child.birthdate);
@@ -86,6 +84,35 @@ myAccountServ.logout().then(function(response) {
 });
 };
 
+
+//this takes is on the editaAccount
+    $scope.addChild = function() {
+        $scope.customerObj.children.push({name: '', birthdate: ''});
+    };
+
+    $scope.remove = function(array, index){
+        array.splice(index, 1);
+    }
+
+    $scope.addNewChild = function(array, index, div){
+        array.push(index);
+        addNewChildButton.style.display = "none";
+    }
+
+    $scope.editAccount = function(user){
+      console.log(user);
+    }
+
+    $scope.user = {
+        parent: {
+            email: '',
+            phone: ''
+        },
+        children: [{
+            name: '',
+            birthdate: ''
+        }]
+    };
 
 
 });

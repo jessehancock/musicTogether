@@ -2,30 +2,30 @@
     <!-- <account-nav-directive></account-nav-directive> -->
     <div class="myaccount-container">
         <div class="current-user">
-            <h1>{{parent.name}}</h1>
+            <h4>Name<h4>
+            <input type="text" placeholder="{{parent.name}}" ng-model="parent.name">
+            <h4>Email<h4>
+            <input type="text" placeholder="{{parent.email}}" ng-model="parent.email">
+            <h4>Phone Number<h4>
+            <input type="text" placeholder="{{parent.phone}}" ng-model="parent.phone">
         </div>
-
 
         <div class="children-wrapper">
             <div class='myaccount-child edit-child-buttons' ng-repeat="child in parent.children">
-                <h3>{{child.name}}</h3>
-                <p>{{child.birthdate | date}}</p>
-                <div ng-show="child.length.schedule_id">None</div>
-            </div>
-            <div class="myaccount-child">
+                <h4>Child Name</h4>
+            <input type="text" placeholder="{{child.name}}" ng-model="child.name">
+            <h4>Birthdate</h4>
+            <input type="text" placeholder="{{child.birthdate | date}}" onfocus="(this.type='date')" ng-model="child.birthdate" />
+            <div ng-show="child.length.schedule_id">None</div>
+            <a ng-click="remove(parent.children, $index)">Remove</a>
+        </div>
+        <div id="addNewChildButton" ng-click="addNewChild(parent.children, $index)"  class="myaccount-child edit-child-buttons">
               <h3>Add Child</h3>
-              <p class="addChildAdd">+</p>
-            </div>
-
-
-
-
         </div>
-
-
-        <div>
-            <button class="btn btn-outline-* dark-button account-setup-button" type="button">Update Account</button>
-        </div>
-
     </div>
+    <div>
+        <button class="btn btn-outline-* dark-button account-setup-button" type="button" ng-click="editAccount(parent)" >Update Account</button>
+    </div>
+
+</div>
 </div>

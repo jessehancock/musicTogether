@@ -319,6 +319,35 @@ angular.module("musApp").controller("myAccountCtrl", ["$scope", "myAccountServ",
             $state.go('home');
         });
     };
+
+    //this takes is on the editaAccount
+    $scope.addChild = function () {
+        $scope.customerObj.children.push({ name: '', birthdate: '' });
+    };
+
+    $scope.remove = function (array, index) {
+        array.splice(index, 1);
+    };
+
+    $scope.addNewChild = function (array, index, div) {
+        array.push(index);
+        addNewChildButton.style.display = "none";
+    };
+
+    $scope.editAccount = function (user) {
+        console.log(user);
+    };
+
+    $scope.user = {
+        parent: {
+            email: '',
+            phone: ''
+        },
+        children: [{
+            name: '',
+            birthdate: ''
+        }]
+    };
 }]);
 // INITILIZE SERVICE
 // ============================================================
