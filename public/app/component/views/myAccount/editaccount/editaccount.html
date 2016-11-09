@@ -19,12 +19,24 @@
             <div ng-show="child.length.schedule_id">None</div>
             <a ng-click="remove(parent.children, $index)">Remove</a>
         </div>
-        <div id="addNewChildButton" ng-click="addNewChild(parent.children, $index)"  class="myaccount-child edit-child-buttons">
-              <h3>Add Child</h3>
+
+
+<!-- this is a test to see if I can get this to work -->
+        <div class='myaccount-child edit-child-buttons' ng-repeat="itemToAdd in itemsToAdd">
+            <h4>Child Name</h4>
+            <input type="text" ng-model="itemToAdd.childName" />
+            <h4>Birthdate</h4>
+            <input type="date" ng-model="itemToAdd.birthdate" />
+            <a ng-click="removeItemToAdd(itemToAdd, $index)">Remove</a>
         </div>
+        <div>
+            <button class="btn btn-outline-* dark-button account-setup-button" ng-click="addNew()">Add new</button>
+        </div>
+<!--  -->
+
     </div>
     <div>
-        <button class="btn btn-outline-* dark-button account-setup-button" type="button" ng-click="editAccount(parent)" >Update Account</button>
+        <button class="btn btn-outline-* dark-button account-setup-button" type="button" ng-click="editAccount(parent, itemsToAdd)">Update Account</button>
     </div>
 
 </div>

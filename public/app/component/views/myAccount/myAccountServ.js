@@ -16,7 +16,7 @@ angular.module("musApp").service("myAccountServ", function($http) {
   this.getClassSchedule = function() {
     return $http({
       method: 'GET',
-      url: '/classSchedule', 
+      url: '/classSchedule',
     }).then(function(response) {
       return response.data;
     });
@@ -31,6 +31,20 @@ angular.module("musApp").service("myAccountServ", function($http) {
       return response.data;
     });
   };
+
+  this.updateUser = function(updatedUser, newKids){
+    for(var i = 0; i < newKids.length; i++){
+      updatedUser.children.push(newKids[i])
+    }
+    // return $http({
+    //   method: 'PUT',
+    //   url: '/editUser',
+    //   data: updatedUser
+    // }).then(function(response){
+    //   return response.data;
+    // });
+    console.log(updatedUser);
+  }
 
   this.logout = function() {
     return $http({

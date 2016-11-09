@@ -320,7 +320,7 @@ angular.module("musApp").controller("myAccountCtrl", ["$scope", "myAccountServ",
         });
     };
 
-    //this takes is on the editaAccount
+    //this takes is on the editAccount
     $scope.addChild = function () {
         $scope.customerObj.children.push({ name: '', birthdate: '' });
     };
@@ -329,24 +329,36 @@ angular.module("musApp").controller("myAccountCtrl", ["$scope", "myAccountServ",
         array.splice(index, 1);
     };
 
-    $scope.addNewChild = function (array, index, div) {
-        array.push(index);
-        addNewChildButton.style.display = "none";
+    //TEST STUFF TO SEE IF I CAN GET THIS TO WORK
+
+    $scope.itemsToAdd = [{
+        childName: '',
+        birthdate: ''
+    }];
+
+    $scope.removeItemToAdd = function (itemToAdd, index) {
+        console.log(itemToAdd, index);
+        var index = $scope.itemsToAdd.indexOf(itemToAdd);
+        $scope.itemsToAdd.splice(index, 1);
     };
 
-    $scope.editAccount = function (user) {
-        console.log(user);
-    };
-
-    $scope.user = {
-        parent: {
-            email: '',
-            phone: ''
-        },
-        children: [{
-            name: '',
+    $scope.addNew = function () {
+        $scope.itemsToAdd.push({
+            childName: '',
             birthdate: ''
-        }]
+        });
+    };
+
+    $scope.editAccount = function (user, itemsToAdd) {
+        var newKids = [];
+        for (var i = 0; i < itemsToAdd.length; i++) {
+            if (itemsToAdd[i].childName != "") newKids.push(itemsToAdd[i]);
+        }
+        // console.log(user, newKids);
+        myAccountServ.updateUser(user, newKids).then(function (response) {
+            // $scope.parent = response;
+            // $state.go('myaccount');
+        });
     };
 }]);
 // INITILIZE SERVICE
@@ -381,6 +393,20 @@ angular.module("musApp").service("myAccountServ", ["$http", function ($http) {
     }).then(function (response) {
       return response.data;
     });
+  };
+
+  this.updateUser = function (updatedUser, newKids) {
+    for (var i = 0; i < newKids.length; i++) {
+      updatedUser.children.push(newKids[i]);
+    }
+    // return $http({
+    //   method: 'PUT',
+    //   url: '/editUser',
+    //   data: updatedUser
+    // }).then(function(response){
+    //   return response.data;
+    // });
+    console.log(updatedUser);
   };
 
   this.logout = function () {

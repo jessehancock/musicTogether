@@ -85,7 +85,7 @@ myAccountServ.logout().then(function(response) {
 };
 
 
-//this takes is on the editaAccount
+//this takes is on the editAccount
     $scope.addChild = function() {
         $scope.customerObj.children.push({name: '', birthdate: ''});
     };
@@ -94,25 +94,51 @@ myAccountServ.logout().then(function(response) {
         array.splice(index, 1);
     }
 
-    $scope.addNewChild = function(array, index, div){
-        array.push(index);
-        addNewChildButton.style.display = "none";
+
+
+    //TEST STUFF TO SEE IF I CAN GET THIS TO WORK
+
+
+
+    $scope.itemsToAdd = [{
+        childName: '',
+        birthdate: ''
+      }];
+
+      $scope.removeItemToAdd = function(itemToAdd, index) {
+        console.log(itemToAdd, index);
+        var index = $scope.itemsToAdd.indexOf(itemToAdd);
+        $scope.itemsToAdd.splice(index, 1);
+      }
+
+      $scope.addNew = function() {
+        $scope.itemsToAdd.push({
+          childName: '',
+          birthdate: ''
+        })
+      }
+
+
+
+    $scope.editAccount = function(user, itemsToAdd){
+      var newKids = [];
+      for(var i = 0; i < itemsToAdd.length; i ++){
+        if(itemsToAdd[i].childName != "")newKids.push(itemsToAdd[i]);
+      }
+      // console.log(user, newKids);
+      myAccountServ.updateUser(user, newKids).then(function(response){
+        // $scope.parent = response;
+        // $state.go('myaccount');
+      });
+
     }
 
-    $scope.editAccount = function(user){
-      console.log(user);
-    }
 
-    $scope.user = {
-        parent: {
-            email: '',
-            phone: ''
-        },
-        children: [{
-            name: '',
-            birthdate: ''
-        }]
-    };
+
+
+
+
+
 
 
 });
