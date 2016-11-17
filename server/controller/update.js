@@ -18,13 +18,16 @@ module.exports = {
       });
 
 
-      }
+    },
 
 
 
     // db.child.update({id: req.body.name, schedule: req.body.class}, function(err, response)
 
-
+    editUser: function(req,res,next) {
+      console.log(req.body);
+      res.status(200).send(rep)
+    }
 
 
 

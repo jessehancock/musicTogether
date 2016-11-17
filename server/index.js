@@ -120,7 +120,7 @@ app.post('/mailinglist', create.postEmail);
 
 //PUT
 app.put('/addToCourse', update.addToCourse);
-
+app.put('/editUser', update.editUser);
 
 
 
