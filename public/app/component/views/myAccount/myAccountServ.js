@@ -36,12 +36,12 @@ angular.module("musApp").service("myAccountServ", function($http) {
     for(var i = 0; i < newKids.length; i++){
       updatedUser.children.push(newKids[i])
     }
-    console.log(updatedUser);
     return $http({
       method: 'PUT',
       url: '/editUser',
       data: updatedUser
     }).then(function(response){
+      console.log(response);
       return response.data;
     });
 

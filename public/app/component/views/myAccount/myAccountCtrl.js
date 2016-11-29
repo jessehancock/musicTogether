@@ -94,7 +94,7 @@ myAccountServ.logout().then(function(response) {
         array.splice(index, 1);
     }
 
-
+//
 
     //TEST STUFF TO SEE IF I CAN GET THIS TO WORK
 
@@ -126,11 +126,17 @@ myAccountServ.logout().then(function(response) {
         if(itemsToAdd[i].childName != "")newKids.push(itemsToAdd[i]);
       }
       // console.log(user, newKids);
-      myAccountServ.updateUser(user, newKids).then(function(response){
-        // $scope.parent = response;
-        // $state.go('myaccount');
+      myAccountServ.updateUser(user, newKids).then(function(response,$rootScope){
+        swal(
+          'Awesome!',
+          'Your account has been updated',
+          'success'
+        );
       });
-
+      myAccountServ.logout().then(function(response) {
+          $rootScope.currentUserSignedIn = false;
+          $state.go('home');
+      });
     }
 
 

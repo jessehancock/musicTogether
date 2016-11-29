@@ -18,7 +18,10 @@ var app = module.exports = express();
 ///////////////////FB AUTH/////////////////////
 
 app.use(session({
-    secret: 'blue orange red head'
+    secret: 'blue orange red head',
+    proxy: true,
+    resave: true,
+    saveUninitialized: true
 }));
 app.use(bodyParser.json());
 app.use(cors());
