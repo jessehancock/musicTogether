@@ -31,8 +31,23 @@ module.exports = {
             if (error) res.status(500).send(error);
             else res.status(200).send(resp);
         });
-    }
+    },
 
+    editKids: function(req, res, next) {
+      // dont know why thing gets turned into just the parent.
+      var parent = req.body.parent;
+      var thing = req.body.children;
+      console.log(thing, parent);
+        db.parent.update({
+            id: req.body.id,
+            email: req.body.email,
+            name: req.body.name
+        }, function(error, resp, thing) {
+            console.log(resp, thing)
+            if (error) res.status(500).send(error);
+            else res.status(200).send(resp);
+        });
+    }
 
 
 
