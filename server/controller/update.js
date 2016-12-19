@@ -33,20 +33,21 @@ module.exports = {
         });
     },
 
-    editKids: function(req, res, next) {
-      // dont know why thing gets turned into just the parent.
-      var parent = req.body.parent;
-      var thing = req.body.children;
-      console.log(thing, parent);
-        db.parent.update({
-            id: req.body.id,
-            email: req.body.email,
-            name: req.body.name
-        }, function(error, resp, thing) {
-            console.log(resp, thing)
-            if (error) res.status(500).send(error);
-            else res.status(200).send(resp);
+    editChildren: function(req, res, next) {
+      var children = req.body.children;
+      for (var i = 0; i < children.length; i++) {
+        db.children(children[i].c_id, children[i].name, children[i].name, function(err, response) {
+            if (err) res.status(500).send(err);
+            else db.parent.update({
+              id: req.body.id,
+              email: req.body.email,
+              name: req.body.name
+            }, function(error, resp) {
+                if (error) res.status(500).send(error);
+                else res.status(200).send(resp);
+            });
         });
+      }
     }
 
 
