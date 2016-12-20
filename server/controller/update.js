@@ -23,32 +23,24 @@ module.exports = {
     // db.child.update({id: req.body.name, schedule: req.body.class}, function(err, response)
     // TODO: Make it so the kids are updated as well as the parent.
     editUser: function(req, res, next) {
+      var children = req.body.children;
         db.parent.update({
             id: req.body.id,
             email: req.body.email,
             name: req.body.name
-        }, function(error, resp) {
-            if (error) res.status(500).send(error);
-            else res.status(200).send(resp);
-        });
-    },
-
-    editChildren: function(req, res, next) {
-      var children = req.body.children;
-      for (var i = 0; i < children.length; i++) {
-        db.children(children[i].c_id, children[i].name, children[i].name, function(err, response) {
+        }, function(err, updated) {
+            console.log(children);
+            var updatedUser = updated;
+            for (var i = 0; i < children.length; i++) {
+                db.put_children_EA(children[i].c_id, children[i].name,
+                  children[i].birthdate);
+            }
             if (err) res.status(500).send(err);
-            else db.parent.update({
-              id: req.body.id,
-              email: req.body.email,
-              name: req.body.name
-            }, function(error, resp) {
-                if (error) res.status(500).send(error);
-                else res.status(200).send(resp);
-            });
+            req.session.passport.user = updatedUser;
+            res.status(200).send(updatedUser);
         });
-      }
     }
+
 
 
 

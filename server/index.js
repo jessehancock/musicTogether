@@ -123,7 +123,7 @@ app.post('/mailinglist', create.postEmail);
 
 //PUT
 app.put('/addToCourse', update.addToCourse);
-app.put('/editUser', update.editUser, update.editChildren);//HOPE this works.
+app.put('/editUser', update.editUser);//HOPE this works.
 
 
 
